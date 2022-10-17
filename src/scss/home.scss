@@ -34,15 +34,18 @@ body {
 	// position: relative;
 	&::after {
 		content: "";
-		background: url(@img/first/Linth1.svg) no-repeat;
+		background: url(@img/first/Linth1.svg) center / cover no-repeat;
 		position: absolute;
-		width: 100%;
-		height: 100%;
+		z-index: 5;
+		width: 100px;
+		height: 100px;
 		left: 50%;
-		top: 120px;
+		top: 150px;
 		@media (max-width: $tablet) {
+			width: 80px;
+			height: 80px;
 			left: 12vw;
-			top: 105vh;
+			top: 100vh;
 		}
 	}
 
