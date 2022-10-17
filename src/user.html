@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/_head.htm',{
+"title":"Главная"
+})
+
+<body>
+	<div class="wrapper">
+		@@include('html/_header.htm',{})
+		<main class="page">
+
+			<section class="page__new-request new-request">
+				<div class="new-request__container">
+					<div class="new-request_head">
+						<h2 class="new-request_head__title _h2">Создать новую заявку</h2>
+
+					</div>
+					<div class="new-request__body">
+						<form action="#" method="post">
+							<label name="title">Название</label>
+							<input class="_h4" type="text" name="title" placeholder="напиши название">
+							<label name="discription">Описание</label>
+							<input class="_h4" type="textaria" name="title" placeholder="опишите проблему">
+							<label name="category">Категория</label>
+							<select name="category">
+								<option>Категория1</option>
+								<option>Категория2</option>
+								<option>Категория3</option>
+								<option>Категория4</option>
+							</select>
+
+						</form>
+					</div>
+
+				</div>
+
+
+			</section>
+
+			<section class="page__count count">
+				<div class="count__container">
+					<div class="count__head">
+						<h2 class="count__title _h2">колличество решенных заявок</h2>
+					</div>
+					<div class="count__body"><img src="@img/count/Group 46.svg" alt="">
+						<p>147</p>
+					</div>
+				</div>
+			</section>
+		</main>
+		@@include('html/_footer.htm',{})
+	</div>
+	@@include('html/_popup.htm',{})
+	@@include('html/_js.htm',{})
+</body>
+
+</html>
