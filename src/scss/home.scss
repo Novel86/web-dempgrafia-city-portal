@@ -1,0 +1,303 @@
+//====================================================================================================
+body {
+	background: url(@img/body-bg.svg), rgba(255, 255, 255, 0.93);
+	background-blend-mode: color;
+	background-size: 30%;
+}
+//====================================================================================================
+
+.page {
+	// .page__first
+
+	&__first {
+		@include adaptiveValue("margin-bottom", 150, 85);
+		overflow: hidden;
+	}
+
+	// .page__request
+
+	&__request {
+		@include adaptiveValue("margin-bottom", 150, 85);
+	}
+
+	// .page__count
+
+	&__count {
+		@include adaptiveValue("margin-bottom", 150, 85);
+	}
+}
+
+//====================Первый экран======================
+
+.first {
+	display: flex;
+	// position: relative;
+	&::after {
+		content: "";
+		background: url(@img/first/Linth1.svg) no-repeat;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 50%;
+		top: 120px;
+		@media (max-width: $tablet) {
+			left: 12vw;
+			top: 105vh;
+		}
+	}
+
+	// .first__content
+
+	&__content {
+		flex: 0 0 100%;
+	}
+
+	// .first__container
+
+	&__container {
+		display: flex;
+		align-items: center;
+	}
+
+	// .first__body
+
+	&__body {
+		width: 50%;
+		padding-block: 65px;
+		._p:not(:last-child) {
+			margin-bottom: 70px;
+			margin-right: 100px;
+		}
+		._h1:not(:last-child) {
+			margin-bottom: 20px;
+		}
+	}
+
+	// .first__title
+
+	&__title {
+	}
+
+	// .first__text
+
+	&__text {
+	}
+
+	// .first__btn
+
+	&__btn {
+		span {
+			color: inherit;
+			margin-right: 10px;
+		}
+	}
+
+	// .first__image
+
+	&__image {
+		position: relative;
+		flex: 0 0 50%;
+		transform: translateX(calc((140px + (450 - 140) * ((100vw - 700px) / (1200 - 700))) * -1));
+
+		img {
+			position: absolute;
+			width: auto;
+			height: 100%;
+			right: 0;
+			top: 0;
+			object-fit: cover;
+			// object-position: right;
+		}
+	}
+}
+
+//====================Последние заявки======================
+
+.request {
+	// .request__container
+
+	&__container {
+	}
+
+	// .request__head
+
+	&__head {
+		@include adaptiveValue("margin-bottom", 80, 60);
+		text-align: right;
+	}
+
+	// .request__title
+
+	&__title {
+		position: relative;
+		display: inline-block;
+		&::before {
+			content: "";
+			position: absolute;
+			width: 30vw;
+			height: 4px;
+			border-radius: 100px;
+			left: 0;
+			top: 50%;
+			transform: translate3d(calc(-100% - 40px), -50%, 0);
+			background-color: $mainTitle;
+		}
+	}
+
+	// .request__body
+
+	&__body {
+	}
+
+	// .request__row
+
+	&__row {
+		border-radius: 150px;
+		overflow: hidden;
+		display: flex;
+		flex-wrap: wrap;
+		@media (max-width: 992px) {
+			flex-wrap: nowrap;
+			overflow: auto;
+		}
+	}
+
+	// .request__column
+
+	&__column {
+		display: flex;
+		flex-direction: column;
+		flex: 0 0 50%;
+		background-color: $accent;
+		padding: rem(96) rem(103);
+		@include adaptiveValue("padding-inline", 103, 70);
+		@include adaptiveValue("padding-block", 96, 60);
+		&:nth-child(2) {
+			background-color: $one;
+		}
+		&:nth-child(3) {
+			background-color: $two;
+		}
+		&:nth-child(4) {
+			background-color: $three;
+		}
+	}
+
+	// .request__card
+
+	&__card {
+	}
+}
+
+.cardRequest {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	background-color: $notWhite;
+	border-radius: 30px;
+	overflow: hidden;
+	padding: rem(25) rem(30);
+
+	// .cardRequest__body
+
+	&__body {
+		flex: 1 1 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+	}
+
+	// .cardRequest__date
+
+	&__date {
+		display: inline-flex;
+		align-items: center;
+		span {
+			color: inherit;
+			margin-right: 5px;
+		}
+		margin-bottom: 13px;
+	}
+
+	// .cardRequest__image
+
+	&__image {
+		position: relative;
+		border-radius: 10px;
+		overflow: hidden;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		margin-bottom: 10px;
+	}
+
+	// .cardRequest__status
+
+	&__status {
+		position: absolute;
+		width: fit-content;
+		height: auto;
+		left: 50%;
+		bottom: 20px;
+		transform: translate3d(-50%, 0, 0);
+	}
+
+	// .cardRequest__text
+
+	&__text {
+		margin-bottom: 45px;
+		flex: 1 1 auto;
+		@include adaptiveValue("font-size", 20, 16);
+	}
+
+	// .cardRequest__category
+
+	&__category {
+	}
+}
+
+//====================Количество решенных заявок======================
+
+.count {
+	// .count__head
+
+	&__head {
+		@include adaptiveValue("margin-bottom", 80, 60);
+		position: relative;
+		&::after {
+			content: "";
+			background: url(@img/count/Module.svg);
+			position: absolute;
+			width: 60px;
+			height: 60px;
+			right: 100px;
+			top: 0;
+		}
+	}
+
+	// .count__title
+
+	&__title {
+	}
+
+	// .count__body
+
+	&__body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		p {
+			text-align: center;
+			font-weight: 500;
+			font-size: 37px;
+			color: $notWhite;
+			text-shadow: 0px 0px 4px white;
+			position: absolute;
+			z-index: 2;
+		}
+		img {
+		}
+	}
+}
