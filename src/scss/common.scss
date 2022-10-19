@@ -39,6 +39,7 @@
 }
 
 ._btn {
+	position: relative;
 	display: inline-block;
 	font-weight: 700;
 	line-height: rem(23);
@@ -48,19 +49,43 @@
 	color: $notWhite;
 	padding: rem(20) rem(30);
 	background-color: $accent;
-	box-shadow: 0px 0px 15px rgba(211, 51, 103, 0.5);
 	border-radius: 100px;
-	transition: box-shadow 0.5s ease, text-shadow 0.5s linear;
-	&:hover {
-		box-shadow: 0px 0px 25px rgba(211, 51, 103, 0.8);
-		text-shadow: 0 0 20px #f7f7f780;
+	transition: text-shadow 0.5s ease;
+	&:after {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		border-radius: 100px;
+		left: 0;
+		top: 0;
+		background-color: inherit;
+		filter: blur(5px);
+		transition: filter 0.5s ease;
 	}
+
 	&_medium {
 		padding: rem(10) rem(15);
 		text-transform: lowercase;
 		font-size: rem(18);
 		font-weight: normal;
 	}
+	[class*="_ic"] {
+		color: inherit;
+		margin-right: 10px;
+	}
+}
+._btn:hover,
+[class*="input"]:hover + ._btn {
+	text-shadow: 0 0 10px #f7f7f780;
+	&::after {
+		filter: blur(7px);
+	}
+}
+
+[class*="input"]:focus + ._btn {
+	filter: brightness(95%);
 }
 
 ._tags {

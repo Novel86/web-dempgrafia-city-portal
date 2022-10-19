@@ -2,32 +2,39 @@
 // Снипет (HTML): sel
 .select {
 	position: relative;
+	z-index: 10;
 	// .select__body
 	&__body {
 		position: relative;
 	}
 	// .select__title
 	&__title {
+		padding: rem(10) rem(50);
+		min-width: 240px;
+		position: relative;
+		z-index: 5;
 		color: inherit;
-		text-align: left;
-		border: 1px solid #d9d9d9;
-		background-color: #fff;
+		text-align: center;
 		cursor: pointer;
 		width: 100%;
-		border-radius: 4px;
+		border-radius: 80px;
+		font-size: 16px;
+		background-color: $greyLight;
+		border: 2px solid $notWhite;
+		// border: 1px solid #e7e7e7;
 	}
 	// .select__value
 	&__value {
 		display: flex;
 		align-items: center;
 		height: rem(30);
-		padding: 0 rem(15);
 		gap: rem(10);
 		> * {
 			flex: 1 1 auto;
 		}
 		&:after {
 			content: "";
+			background: url(@img/user/new-request/arrows-select.svg) center / 80% no-repeat;
 			align-self: stretch;
 			flex: 0 0 10px;
 			transition: all 0.3s ease 0s;
@@ -35,7 +42,7 @@
 			justify-content: center;
 			align-items: center;
 			._select-open & {
-				transform: rotate(-180deg);
+				transform: rotate(-90deg);
 			}
 		}
 		&._select-pseudo-label {
@@ -57,16 +64,19 @@
 	// .select__options
 	&__options {
 		color: #000;
+		overflow: hidden;
 		position: absolute;
+		z-index: 4;
 		top: 29px;
-		border-radius: 0 0 4px 4px;
+		border-radius: 0 0 30px 30px;
 		min-width: 100%;
+		width: 100%;
 		left: 0;
-		background-color: #fff;
+		background-color: $notWhite;
 		border-top: 0;
 		border: 1px solid #d9d9d9;
 		border-top: 0;
-		padding: 10px 0px 5px 0px;
+		padding-block: 20px 10px;
 	}
 	// .select__scroll
 	&__scroll {
@@ -84,16 +94,18 @@
 	// .select__option
 	&__option {
 		width: 100%;
-		text-align: left;
+		font-size: rem(16);
+		text-align: center;
 		cursor: pointer;
-		padding: 5px 15px;
+		padding: 10px 10px;
 		color: inherit;
+		white-space: wrap;
 		&._select-selected {
-			background-color: #eee;
+			background-color: red;
 		}
 		@media (any-hover: hover) {
 			&:hover {
-				background: #d9d9d9;
+				background: $greyLight;
 			}
 		}
 	}
@@ -110,13 +122,13 @@
 
 	// Состояния селекта
 	&._select-open {
-		z-index: 5;
 	}
 	&._select-disabled {
 	}
 	&._select-active {
 	}
 	&._select-focus {
+		filter: brightness(90%);
 	}
 	&._select-multiple {
 	}

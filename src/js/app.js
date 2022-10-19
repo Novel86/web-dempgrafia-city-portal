@@ -75,16 +75,16 @@ import * as flsForms from "./files/forms/forms.js";
 
 /* Работа с полями формы */
 /* Документация: https://template.fls.guru/template-docs/rabota-s-formami.html */
-/*
+
 flsForms.formFieldsInit({
 	viewPass: false,
-	autoHeight: false
+	autoHeight: true
 });
-*/
+
 
 /* Oтправка формы */
 /* Документация: https://template.fls.guru/template-docs/rabota-s-formami.html */
-// flsForms.formSubmit();
+flsForms.formSubmit();
 
 /* Модуль формы "колличество" */
 // flsForms.formQuantity();
@@ -93,10 +93,13 @@ flsForms.formFieldsInit({
 // flsForms.formRating();
 
 /* Модуль работы с select. */
-// import './libs/select.js'
+import './libs/select.js';
 
 /* Модуль работы с календарем */
 // import './files/forms/datepicker.js'
+
+/* модуль превью подгруженного изображения */
+import './files/forms/imagePreview.js';
 
 /* (В работе) Модуль работы с масками.*/
 /*
@@ -144,7 +147,7 @@ flsForms.formFieldsInit({
 Изменение дизайна скроллбара
 Документация по работе в шаблоне: В HTML добавляем к блоку атрибут data-simplebar
 Документация плагина: https://github.com/Grsmto/simplebar/tree/master/packages/simplebar
-Сниппет(HTML): 
+Сниппет(HTML):
 */
 // import './files/scroll/simplebar.js';
 
@@ -183,7 +186,7 @@ import * as flsScroll from "./files/scroll/scroll.js";
 // Галерея ========================================================================================================================================================================================================================================================
 // ========================================================================================================================================================================================================================================================
 /*
-Документация по работе в шаблоне: 
+Документация по работе в шаблоне:
 Документация плагина: https://www.lightgalleryjs.com/docs/
 Сниппет(HTML):
 */

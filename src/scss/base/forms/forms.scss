@@ -1,6 +1,14 @@
 //<FORM>
 // Снипет (HTML):
 .form {
+	* {
+		&:active,
+		&:hover,
+		&:focus {
+			outline: 0;
+			outline-offset: 0;
+		}
+	}
 	&__row {
 	}
 	&__column {
@@ -12,6 +20,16 @@
 	&__button {
 	}
 	&__error {
+		color: $accent;
+		font-size: rem(64);
+		font-family: "Gilroy";
+		position: absolute;
+		width: fit-content;
+		height: fit-content;
+		left: 25px;
+		top: 100%;
+		transform: translate3d(0, -55px, 0);
+		pointer-events: none;
 	}
 }
 //</FORM>
@@ -34,7 +52,7 @@
 
 // <SELECT>
 // Снипет (HTML): sel
-// @import "select";
+@import "select";
 
 // <RATING>
 // Снипет (HTML): rating

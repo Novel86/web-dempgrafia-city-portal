@@ -1,0 +1,183 @@
+//====================page======================
+.page {
+	// .page__newRequest
+
+	&__newRequest {
+		@include adaptiveValue("margin-bottom", 150, 85);
+		@include adaptiveValue("margin-top", 200, 100);
+	}
+}
+
+//====================новая заявка======================
+
+.newRequest {
+	// .newRequest_head
+
+	&__head {
+		@include adaptiveValue("margin-bottom", 80, 60);
+		max-width: 1200px;
+		margin-inline: auto;
+		@include adaptiveValue("padding-left", 90, 50);
+	}
+
+	// .newRequest__container
+
+	&__container {
+		max-width: 1360px;
+	}
+
+	// .newRequest__body
+
+	&__body {
+		// @include adaptiveValue("padding-inline", 80, 50);
+		@include adaptiveValue("padding-block", 68, 50);
+		border-radius: 80px;
+		background-color: #4e4e4eb5;
+		position: relative;
+		overflow: hidden;
+	}
+
+	// .newRequest__form
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		> div:not(:last-child) {
+			margin-bottom: rem(30);
+		}
+		@include adaptiveValue("padding-left", 90, 50);
+		&::after {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 70%;
+			@include adaptiveValue("left", 0, 320);
+			bottom: -1px;
+			background: url(@img/first/Linth.svg) 115% 80% / contain no-repeat;
+			pointer-events: none;
+		}
+	}
+
+	// .newRequest__item
+
+	&__item {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	// .newRequest__label
+
+	&__label {
+		margin: 0 0 rem(10) rem(25);
+		color: $notWhite;
+	}
+
+	// .newRequest__input
+
+	&__input {
+		// position: relative;
+		border-radius: 80px;
+		padding: rem(10) rem(50);
+		width: rem(480);
+		font-size: 16px;
+		background: $notWhite;
+		border: 2px solid #e7e7e7;
+		box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1), inset 0px 5px 7px #ffffff, inset 0px -2px 8px rgba(0, 0, 0, 0.05);
+
+		&:hover {
+			box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3), inset 0px 5px 7px #ffffff, inset 0px -2px 8px rgba(0, 0, 0, 0.05);
+		}
+		&._form-focus {
+			background-color: $greyLight;
+			box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4), inset 0px 3px 7px #ffffff58, inset 0px -2px 8px rgba(0, 0, 0, 0.05);
+		}
+
+		&._form-error {
+			color: $accent;
+			border: 2px solid $accent;
+			box-shadow: 0px 0px 15px rgba(211, 51, 103, 0.5), inset 0px 5px 7px #ffffff, inset 0px -2px 8px rgba(0, 0, 0, 0.05);
+		}
+
+		&_text {
+		}
+
+		// .newRequest__input_discription
+
+		&_discription {
+			resize: none;
+			min-height: 80px;
+			&::-webkit-scrollbar {
+				width: 0;
+			}
+		}
+	}
+
+	// .newRequest__fileInput
+
+	&__fileInput {
+	}
+
+	// .newRequest__button
+
+	&__button {
+		position: relative;
+		z-index: 2;
+		align-self: center;
+		&:focus {
+			filter: brightness(95%);
+		}
+	}
+}
+
+.fileInput {
+	span {
+		font-size: rem(14);
+	}
+	// .fileInput__body
+
+	&__body {
+		position: relative;
+		display: inline-block;
+		margin-right: rem(40);
+	}
+
+	// .fileInput__input
+
+	&__input {
+		position: absolute;
+		z-index: 2;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		font-size: 0;
+		opacity: 0;
+		cursor: pointer;
+	}
+
+	// .fileInput__button
+
+	&__button {
+		background-color: $two;
+		min-width: 200px;
+	}
+
+	// .fileInput__preview
+
+	&__preview {
+		display: block;
+		margin-block: 20px;
+		width: 100px;
+		height: 100px;
+		border-radius: 20px;
+		overflow: hidden;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}
