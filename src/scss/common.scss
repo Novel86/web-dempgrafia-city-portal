@@ -32,6 +32,10 @@
 	color: $mainTitle;
 }
 
+._h4 {
+	font-weight: 700;
+}
+
 ._nav {
 	font-weight: 700;
 	letter-spacing: 0.07em;
@@ -71,10 +75,6 @@
 		font-size: rem(18);
 		font-weight: normal;
 	}
-	[class*="_ic"] {
-		color: inherit;
-		margin-right: 10px;
-	}
 }
 ._btn:hover,
 [class*="input"]:hover + ._btn {
@@ -90,7 +90,9 @@
 
 ._tags {
 	position: relative;
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 	font-weight: 500;
 	font-size: 13px;
 	line-height: 1;
@@ -102,6 +104,9 @@
 	&_bright {
 		color: $notWhite;
 	}
+
+	//._tags_big
+
 	&_big {
 		padding: rem(13) rem(35) rem(10);
 		background-color: $two;
@@ -118,4 +123,9 @@
 		background-color: inherit;
 		filter: blur(5px);
 	}
+}
+
+[class*="_ic"] {
+	color: inherit;
+	margin-right: 10px;
 }

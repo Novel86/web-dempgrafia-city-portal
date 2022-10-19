@@ -6,6 +6,12 @@
 		@include adaptiveValue("margin-bottom", 150, 85);
 		@include adaptiveValue("margin-top", 200, 100);
 	}
+
+	// .page__myRequest
+
+	&__myRequest {
+		@include adaptiveValue("margin-bottom", 150, 85);
+	}
 }
 
 //====================новая заявка======================
@@ -14,7 +20,7 @@
 	// .newRequest_head
 
 	&__head {
-		@include adaptiveValue("margin-bottom", 80, 60);
+		@include adaptiveValue("margin-bottom", 80, 30);
 		max-width: 1200px;
 		margin-inline: auto;
 		@include adaptiveValue("padding-left", 90, 50);
@@ -179,5 +185,124 @@
 			height: 100%;
 			object-fit: cover;
 		}
+	}
+}
+
+//====================мои заявки======================
+
+.myRequest {
+	// .myRequest__container
+
+	&__container {
+	}
+
+	// .myRequest__head
+
+	&__head {
+		@include adaptiveValue("margin-bottom", 80, 30);
+	}
+
+	// .myRequest__title
+
+	&__title {
+	}
+
+	// .myRequest__body
+
+	&__body {
+		display: flex;
+		flex-wrap: wrap;
+		@media (max-width: 1100px) {
+		}
+		justify-content: space-between;
+		gap: rem(60);
+	}
+
+	// .myRequest__column
+
+	&__column {
+		flex: 1 1 calc(50% - 60px);
+		@media (max-width: 1100px) {
+			flex: 1 0 100%;
+		}
+		display: flex;
+		flex-direction: column;
+	}
+
+	// .myRequest__card
+
+	&__card {
+	}
+}
+
+.myCard {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	background: rgba(241, 227, 207, 0.5);
+	border-radius: 30px;
+	padding: rem(15) rem(30) rem(0) rem(0);
+	// .myCard__date
+
+	&__date {
+		align-self: start;
+		margin: rem(0) rem(0) rem(10) rem(30);
+	}
+
+	// .myCard__raw
+
+	&__raw {
+		display: flex;
+		column-gap: 15px;
+		flex: 1 1 auto;
+	}
+
+	// .myCard__media
+
+	&__media {
+		flex: 0 0 240px;
+		border-radius: 0px 80px 0px 10px;
+		overflow: hidden;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	// .myCard__content
+
+	&__content {
+		padding: rem(35) rem(0) rem(15) rem(0);
+		display: flex;
+		flex-direction: column;
+		justify-content: start;
+		align-items: start;
+	}
+
+	// .myCard__title
+
+	&__title {
+		margin-bottom: rem(10);
+	}
+
+	// .myCard__text
+
+	&__text {
+		margin-bottom: rem(33);
+		flex: 1 1 auto;
+	}
+
+	// .myCard__status
+
+	&__status {
+		display: inline-block;
+		margin-bottom: rem(17);
+	}
+
+	// .myCard__category
+
+	&__category {
+		display: inline-block;
 	}
 }
