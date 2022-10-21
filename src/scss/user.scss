@@ -89,16 +89,16 @@
 		padding: rem(10) rem(50);
 		width: rem(480);
 		font-size: 16px;
-		background: $notWhite;
+		background: $greyLight;
 		border: 2px solid #e7e7e7;
-		box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1), inset 0px 5px 7px #ffffff, inset 0px -2px 8px rgba(0, 0, 0, 0.05);
+		box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1), inset 0px -2px 8px rgba(0, 0, 0, 0.05);
 
 		&:hover {
-			box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3), inset 0px 5px 7px #ffffff, inset 0px -2px 8px rgba(0, 0, 0, 0.05);
+			box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3), inset 0px -2px 8px rgba(0, 0, 0, 0.05);
 		}
 		&._form-focus {
 			background-color: $greyLight;
-			box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4), inset 0px 3px 7px #ffffff58, inset 0px -2px 8px rgba(0, 0, 0, 0.05);
+			box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4), inset 0px -2px 8px rgba(0, 0, 0, 0.05);
 		}
 
 		&._form-error {
@@ -132,6 +132,7 @@
 		position: relative;
 		z-index: 2;
 		align-self: center;
+		@include adaptiveValue("transform: translateX()", 90, 50);
 		&:focus {
 			filter: brightness(95%);
 		}
