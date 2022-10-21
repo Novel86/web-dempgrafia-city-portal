@@ -17,6 +17,33 @@
 //====================новая заявка======================
 
 .newRequest {
+	&::after {
+		content: "";
+		background: url(@img/first/Linth1.svg) center / cover no-repeat;
+		position: absolute;
+		z-index: 5;
+		width: 100px;
+		height: 100px;
+		left: 50%;
+		top: 150px;
+		animation: rotate 10s linear infinite;
+		will-change: transform;
+		@media (max-width: $tablet) {
+			width: 80px;
+			height: 80px;
+			left: 28%;
+			top: 130зч;
+		}
+
+		@keyframes rotate {
+			0% {
+				transform: rotate3D(0, 0, 1, 0deg);
+			}
+			100% {
+				transform: rotate3D(0, 0, 1, 360deg);
+			}
+		}
+	}
 	// .newRequest_head
 
 	&__head {
@@ -132,8 +159,16 @@
 		position: relative;
 		z-index: 2;
 		align-self: center;
-		&:focus {
-			filter: brightness(95%);
+		@include adaptiveValue("margin-left", -90, -50);
+		span {
+			transform: rotateY(0deg);
+			transition: all 0.5s ease;
+		}
+		&:hover {
+			span {
+				transform: rotateY(180deg);
+				transition: all 0.5s ease;
+			}
 		}
 	}
 }

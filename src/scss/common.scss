@@ -75,6 +75,9 @@
 		font-size: rem(18);
 		font-weight: normal;
 	}
+	&:focus {
+		filter: brightness(95%);
+	}
 }
 ._btn:hover,
 [class*="input"]:hover + ._btn {
@@ -126,6 +129,7 @@
 }
 
 [class*="_ic"] {
+	display: inline-block;
 	color: inherit;
 	margin-right: 10px;
 }
