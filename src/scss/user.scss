@@ -132,7 +132,6 @@
 		position: relative;
 		z-index: 2;
 		align-self: center;
-		@include adaptiveValue("transform: translateX()", 90, 50);
 		&:focus {
 			filter: brightness(95%);
 		}
