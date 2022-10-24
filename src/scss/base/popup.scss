@@ -59,3 +59,64 @@ body::after {
 		visibility: visible;
 	}
 }
+
+//====================форма регистрации======================
+
+.reg {
+	// .reg_head
+
+	&_head {
+	}
+
+	// .reg__title
+
+	&__title {
+	}
+
+	// .reg__subtitle
+
+	&__subtitle {
+	}
+
+	// .reg__body
+
+	&__body {
+	}
+
+	// .reg__form
+
+	&__form {
+	}
+}
+
+.regForm {
+	// .regForm__item
+
+	&__item {
+	}
+
+	// .regForm__label
+
+	&__label {
+	}
+
+	// .regForm__input
+
+	&__input {
+	}
+
+	// .regForm__agreement
+
+	&__agreement {
+	}
+
+	// .regForm__inputCheckbox
+
+	&__inputCheckbox {
+	}
+
+	// .regForm__labelCheckbox
+
+	&__labelCheckbox {
+	}
+}
