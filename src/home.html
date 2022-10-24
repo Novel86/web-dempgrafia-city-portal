@@ -107,48 +107,50 @@
 						</div>
 					</div>
 				</section>
+				<div class="form__reg reg">
+					<div class="reg__head">
+						<div class="reg__title _h1">Регистрация</div>
+						<div class="reg__subtitle">нового пользователя</div>
+					</div>
+					<div class="reg__body">
+						<form action="#" method="post" class="reg__form regForm form" id="form-regForm" data-dev>
+							<div class="regForm__item">
+								<label class='regForm__label' for="userName">Имя</label>
+								<input class='regForm__input input' type="text" name="userName" id="userName" placeholder='только кирилица, знаки -' data-required data-error="ошибочка">
+							</div>
+							<div class="regForm__item">
+								<label class='regForm__label' for="userNicname">Логин</label>
+								<input class='regForm__input input' type="text" name="userNicname" id="userNicname" placeholder='только латиница, знаки -' data-required data-error="ошибочка">
+							</div>
+							<div class="regForm__item">
+								<label class='regForm__label' for="userEmail">Почта</label>
+								<input class='regForm__input input' type="email" name="userEmail" id="userEmail" placeholder='адрес электронной почты' data-required='email' data-error="ошибочка">
+							</div>
+							<div class="regForm__item">
+								<label class='regForm__label' for="userPass">Пароль</label>
+								<input class='regForm__input input' type="password" name="userPass" id="userPass" placeholder='только латиница, знаки @$%&/*+-' data-required data-error="ошибочка">
+							</div>
+							<div class="regForm__item">
+								<label class='regForm__label' for="userPassCheck">Повтор Пароля</label>
+								<input class='regForm__input input' type="password" name="userPassCheck" id="userPassCheck" placeholder='повторите пароль' data-required data-error="ошибочка" data-validate>
+							</div>
+							<div class="regForm__item">
+								<div class='regForm__agreement'>
+									<input class='regForm__inputCheckbox checkbox' type="checkbox" name="agreement" id="userCheckbox" placeholder='повторите пароль' data-required data-error="ошибочка">
+									<label class='regForm__labelCheckbox' for="userCheckbox">с условиями пользовательского соглашения ознакомлен</label>
+								</div>
+							</div>
+							<button type="submit" class="regForm__button _btn"><span class='_ic-person'></span>Зарегистрироваться</button>
+						</form>
+					</div>
+				</div>
 			</main>
 			@@include('html/_footer.htm',{})
 		</div>
+
 		@@include('html/_popup.htm',{})
 		@@include('html/_js.htm',{})
-		<div class="form__reg reg">
-			<div class="reg_head">
-				<div class="reg__title _h1">Регистрация</div>
-				<div class="reg__subtitle">нового пользователя</div>
-			</div>
-			<div class="reg__body">
-				<form class="reg__form regForm form" id='regForm' action='sendmail.php' method='post' data-ajax data-dev>
-					<div class="regForm__item">
-						<label class='regForm__label' for="userName">Имя</label>
-						<input class='regForm__input input' type="text" name="userName" id="userName" placeholder='только кирилица, знаки -' data-required data-error="ошибочка" data-validate>
-					</div>
-					<div class="regForm__item">
-						<label class='regForm__label' for="userNicname">Логин</label>
-						<input class='regForm__input input' type="text" name="userNicname" id="userNicname" placeholder='только латиница, знаки -' data-required data-error="ошибочка" data-validate>
-					</div>
-					<div class="regForm__item">
-						<label class='regForm__label' for="userEmail">Почта</label>
-						<input class='regForm__input input' type="email" name="userEmail" id="userEmail" placeholder='адрес электронной почты' data-required='email' data-error="ошибочка" data-validate>
-					</div>
-					<div class="regForm__item">
-						<label class='regForm__label' for="userPass">Пароль</label>
-						<input class='regForm__input input' type="password" name="userPass" id="userPass" placeholder='только латиница, знаки @$%&/*+-' data-required data-error="ошибочка" data-validate>
-					</div>
-					<div class="regForm__item">
-						<label class='regForm__label' for="userPassCheck">Повтор Пароля</label>
-						<input class='regForm__input input' type="password" name="userPassCheck" id="userPassCheck" placeholder='повторите пароль' data-required data-error="ошибочка" data-validate>
-					</div>
-					<div class="regForm__item">
-						<div class='regForm__agreement'>
-							<input class='regForm__inputCheckbox checkbox' type="checkbox" name="agreement" id="userCheckbox" placeholder='повторите пароль' data-required data-error="ошибочка">
-							<label class='regForm__labelCheckbox' for="userCheckbox">с условиями пользовательского соглашения ознакомлен</label>
-						</div>
-					</div>
-					<button type="submit" class="button _btn"><span class='_ic-person'></span>Зарегистрироваться</button>
-				</form>
-			</div>
-		</div>
+
 	</body>
 
 </html>

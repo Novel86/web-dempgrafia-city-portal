@@ -63,19 +63,32 @@ body::after {
 //====================форма регистрации======================
 
 .reg {
-	// .reg_head
+	display: block;
+	max-width: 615px;
+	margin-inline: auto;
+	// flex-direction: column;
+	// justify-content: center;
+	// align-items: center;
+	padding: rem(70) rem(90);
+	background-color: $notWhite;
+	border-radius: 80px;
+	overflow: hidden;
+	// .reg__head
 
-	&_head {
+	&__head {
+		margin-bottom: rem(30);
 	}
 
 	// .reg__title
 
 	&__title {
+		text-align: center;
 	}
 
 	// .reg__subtitle
 
 	&__subtitle {
+		text-align: center;
 	}
 
 	// .reg__body
@@ -86,28 +99,46 @@ body::after {
 	// .reg__form
 
 	&__form {
+		max-width: 420px;
 	}
 }
 
 .regForm {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	// .regForm__item
 
 	&__item {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		&:not(:last-child) {
+			margin-bottom: rem(15);
+		}
 	}
 
 	// .regForm__label
 
 	&__label {
+		padding-left: rem(20);
+		letter-spacing: 0.03em;
+		text-transform: uppercase;
+		font-weight: 500;
 	}
 
 	// .regForm__input
 
 	&__input {
+		padding-block: rem(15);
+		background-color: #e2e2e2;
 	}
 
 	// .regForm__agreement
 
 	&__agreement {
+		text-align: center;
+		margin-bottom: rem(45);
 	}
 
 	// .regForm__inputCheckbox
@@ -118,5 +149,21 @@ body::after {
 	// .regForm__labelCheckbox
 
 	&__labelCheckbox {
+	}
+
+	//.regForm__button
+
+	&__button {
+		align-self: center;
+		span {
+			transform: rotateY(0deg);
+			transition: all 0.5s ease;
+		}
+		&:hover {
+			span {
+				transform: rotateY(180deg);
+				transition: all 0.5s ease;
+			}
+		}
 	}
 }
