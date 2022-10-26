@@ -26,14 +26,8 @@
 		height: 100px;
 		left: 50%;
 		top: 150px;
-		animation: rotate 10s linear infinite;
+		animation: rotate 30s linear infinite;
 		will-change: transform;
-		@media (max-width: $tablet) {
-			width: 80px;
-			height: 80px;
-			left: 28%;
-			top: 130зч;
-		}
 
 		@keyframes rotate {
 			0% {
@@ -42,6 +36,12 @@
 			100% {
 				transform: rotate3D(0, 0, 1, 360deg);
 			}
+		}
+		@media (max-width: $tablet) {
+			width: 80px;
+			height: 80px;
+			left: 28%;
+			top: 130зч;
 		}
 	}
 	// .newRequest_head
