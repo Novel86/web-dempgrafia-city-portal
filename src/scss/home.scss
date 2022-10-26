@@ -1,9 +1,5 @@
 //====================================================================================================
-body {
-	background: url(@img/body-bg.svg), rgba(255, 255, 255, 0.93);
-	background-blend-mode: color;
-	background-size: 30%;
-}
+
 //====================================================================================================
 
 .page {
@@ -41,6 +37,16 @@ body {
 		height: 100px;
 		left: 50%;
 		top: 150px;
+		animation: rotate 30s linear infinite;
+		will-change: transform;
+		@keyframes rotate {
+			0% {
+				transform: rotate3D(0, 0, 1, 0deg);
+			}
+			100% {
+				transform: rotate3D(0, 0, 1, 360deg);
+			}
+		}
 		@media (max-width: $tablet) {
 			width: 80px;
 			height: 80px;

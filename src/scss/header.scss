@@ -97,6 +97,7 @@
 
 	&__signIn {
 		position: relative;
+		z-index: 2;
 
 		&:after {
 			content: "";
