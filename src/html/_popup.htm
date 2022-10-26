@@ -1,10 +1,49 @@
-<!-- <div id="popup" aria-hidden="true" class="popup">
+<div id="popupReg" aria-hidden="true" class="popup">
 	<div class="popup__wrapper">
 		<div class="popup__content">
-			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div data-close type="button" class="popup__close"><span class="_ic-close"></span></div>
 			<div class="popup__text">
-				Text
+				<div class="form__reg reg">
+					<div class="reg__head">
+						<div class="reg__title _h1">Регистрация</div>
+						<div class="reg__subtitle">нового пользователя</div>
+					</div>
+					<div class="reg__body">
+						<form action="#" method="post" class="reg__form regForm form" id="form-regForm" data-dev>
+							<div class="regForm__item">
+								<label class='regForm__label' for="userName">Имя</label>
+								<input class='regForm__input input' type="text" name="userName" id="userName" placeholder='только кирилица, знаки -' data-required data-error="ошибочка">
+							</div>
+							<div class="regForm__item">
+								<label class='regForm__label' for="userNicname">Логин</label>
+								<input class='regForm__input input' type="text" name="userNicname" id="userNicname" placeholder='только латиница, знаки -' data-required data-error="ошибочка">
+							</div>
+							<div class="regForm__item">
+								<label class='regForm__label' for="userEmail">Почта</label>
+								<input class='regForm__input input' type="email" name="userEmail" id="userEmail" placeholder='адрес электронной почты' data-required='email' data-error="ошибочка">
+							</div>
+							<div class="regForm__item">
+								<label class='regForm__label' for="userPass">Пароль</label>
+								<input class='regForm__input input' type="password" name="userPass" id="userPass" placeholder='только латиница, знаки @$%&/*+-' data-required data-error="ошибочка">
+							</div>
+							<div class="regForm__item">
+								<label class='regForm__label' for="userPassCheck">Повтор Пароля</label>
+								<input class='regForm__input input' type="password" name="userPassCheck" id="userPassCheck" placeholder='повторите пароль' data-required data-error="ошибочка">
+							</div>
+							<div class="regForm__item">
+								<div class='regForm__agreement'>
+									<input class='regForm__inputCheckbox checkbox' type="checkbox" name="agreement" id="userCheckbox" placeholder='повторите пароль' data-required data-error="ошибочка" checked>
+									<label class='regForm__labelCheckbox' for="userCheckbox">с условиями пользовательского соглашения ознакомлен</label>
+								</div>
+							</div>
+							<div class="regForm__item"><button type="submit" class="regForm__button _btn"><span class='_ic-person'></span>Зарегистрироваться</button></div>
+							<div div class="regForm__item" class="regForm__item">
+								<div class="regForm__login">уже зарегистрированы, то вам <a href="#">сюда</a></div>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-</div> -->
+</div>
