@@ -17,11 +17,11 @@ textarea {
 	border: 2px solid #e7e7e7;
 	box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.1), inset 0px -2px 8px rgba(0, 0, 0, 0.05);
 	&:hover {
-		box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.15), inset 0px -2px 5px rgba(0, 0, 0, 0.1);
+		box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2), inset 0px -2px 5px rgba(0, 0, 0, 0.1);
 	}
 	&._form-focus {
-		background-color: $greyLight;
-		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2), inset 0px -2px 6px rgba(0, 0, 0, 0.05);
+		filter: brightness(90%);
+		box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2), inset 0px -2px 5px rgba(235, 235, 235, 0.9);
 	}
 	&._form-error {
 		color: $accent;
