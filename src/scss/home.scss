@@ -284,7 +284,7 @@
 			position: absolute;
 			width: 60px;
 			height: 60px;
-			right: 100px;
+			right: 80px;
 			top: 0;
 		}
 	}
@@ -292,6 +292,7 @@
 	// .count__title
 
 	&__title {
+		padding-right: 150px;
 	}
 
 	// .count__body
