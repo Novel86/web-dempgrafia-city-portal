@@ -62,7 +62,6 @@
 	// .newRequest__body
 
 	&__body {
-		// @include adaptiveValue("padding-inline", 80, 50);
 		@include adaptiveValue("padding-block", 68, 50);
 		border-radius: 80px;
 		background-color: #4e4e4eb5;
@@ -203,6 +202,12 @@
 		@include adaptiveValue("margin-bottom", 80, 30);
 	}
 
+	// .myRequest__filter
+
+	&__filter {
+		@include adaptiveValue("margin-bottom", 100, 60);
+	}
+
 	// .myRequest__title
 
 	&__title {
@@ -305,5 +310,54 @@
 
 	&__category {
 		display: inline-block;
+	}
+}
+
+.filter {
+	// .filter__body
+
+	&__body {
+		position: relative;
+		@include adaptiveValue("padding-block", 68, 50);
+		padding-inline: 200px;
+		border-radius: 80px;
+		background-color: #4e4e4eb5;
+		position: relative;
+		overflow: hidden;
+		&::after {
+			content: "";
+			background: url(@img/user/meRequest/iconmonstr-filter-3.svg) 100px center / contain no-repeat;
+			position: absolute;
+			width: 100%;
+			height: 50%;
+			left: 0;
+			top: 50%;
+			transform: translate(0, -50%);
+			opacity: 0.1;
+			pointer-events: none;
+		}
+	}
+
+	// .filter__list
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: start;
+		align-content: center;
+		text-align: center;
+		column-gap: rem(40);
+		row-gap: rem(20);
+	}
+
+	// .filter__item
+
+	&__item {
+		cursor: pointer;
+		filter: brightness(100%);
+		transition: filter 0.5s ease;
+		&:hover {
+			filter: brightness(93%);
+		}
 	}
 }

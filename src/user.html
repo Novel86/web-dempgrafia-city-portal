@@ -22,7 +22,7 @@
 									<input type="text" id="newRequestTitle" name="title" class="input newRequest__input newRequest__input_text" data-required data-error="ошибочка">
 								</div>
 								<div class="newRequest__item">
-									<label for="newRequestDiscription" class="newRequest__label">Кратко опишите объект</label>
+									<label for="newRequestDiscription" class="newRequest__label">Кратко опишите объект улучшения</label>
 									<textarea id="newRequestDiscription" name="discription" class="input newRequest__input newRequest__input_discription" data-autoheight data-required data-error="ошибочка"></textarea>
 								</div>
 								<div class="newRequest__item" style="z-index: 3;">
@@ -41,7 +41,7 @@
 											<input class="fileInput__input" type="file" accept=".jpg, .png, .jpeg, .webp" name="inputFile" id="formImage" data-required data-error="ошибочка">
 											<div class="fileInput__button _btn _btn_medium">выбрать фото</div>
 										</div>
-										<span>jpg, jpeg, png, bmp. размер не более 10 Mb</span>
+										<span>файлы jpg, jpeg, png, bmp. не более 10 Mb</span>
 										<div class="fileInput__preview" id="formPreview"></div>
 									</div>
 
@@ -59,6 +59,16 @@
 					<div class="myRequest__container">
 						<div class="myRequest__head">
 							<h1 class="myRequest__title _h2">мои заявки</h1>
+						</div>
+						<div class="myRequest__filter filter">
+							<div class="filter__body">
+								<ul class="filter__list">
+									<li class="filter__item _tags _tags_bright">категория</li>
+									<li class="filter__item _tags _tags_bright">категория 1</li>
+									<li class="filter__item _tags _tags_bright">категория 2</li>
+									<li class="filter__item _tags _tags_bright">категория 3</li>
+								</ul>
+							</div>
 						</div>
 						<div class="myRequest__body">
 							<div class="myRequest__column">
