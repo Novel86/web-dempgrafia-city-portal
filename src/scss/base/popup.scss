@@ -70,19 +70,20 @@ body::after {
 
 //====================форма регистрации======================
 
-.reg {
+.reg,
+.goodReg {
 	display: block;
 	max-width: 615px;
 	margin-inline: auto;
-	// flex-direction: column;
-	// justify-content: center;
-	// align-items: center;
 	padding: rem(70) rem(90);
 	border-radius: 80px;
 	background-color: #4e4e4ec5;
 	overflow: hidden;
-	// .reg__head
+}
 
+// .reg__head
+
+.reg {
 	&__head {
 		margin-bottom: rem(30);
 	}
@@ -185,5 +186,42 @@ body::after {
 		a {
 			color: #005cc8;
 		}
+	}
+}
+
+//====================успешная регистрация======================
+
+.goodReg {
+	background-color: #9b9b9b74;
+
+	// background-color: #4e4e4ec5;
+
+	// .goodReg__head
+
+	&__head {
+	}
+
+	// .goodReg__title
+
+	&__title,
+	&__subtitle,
+	&__item {
+		text-align: center;
+	}
+
+	// .goodReg__subtitle
+
+	&__subtitle {
+		margin-bottom: rem(20);
+	}
+
+	// .goodReg__body
+
+	&__body {
+	}
+
+	// .goodReg__item
+
+	&__item {
 	}
 }
