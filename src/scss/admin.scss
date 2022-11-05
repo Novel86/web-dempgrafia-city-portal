@@ -1,0 +1,98 @@
+//====================page======================
+.page {
+	// .page__hello
+
+	&__hello {
+		@include adaptiveValue("margin-bottom", 150, 85);
+		@include adaptiveValue("margin-top", 200, 100);
+	}
+	// .page__newRequestTable
+
+	&__newRequestTable {
+		@include adaptiveValue("margin-bottom", 150, 85);
+	}
+}
+
+//====================hello======================
+
+.page {
+	// .page__hello
+
+	&__hello {
+		h2 {
+			text-align: center;
+		}
+	}
+}
+
+//====================table======================
+
+.newRequestTable {
+	// .newRequestTable__container
+
+	&__container {
+	}
+
+	// .newRequestTable__head
+
+	&__head {
+		@include adaptiveValue("margin-bottom", 80, 30);
+	}
+
+	// .newRequestTable__title
+
+	&__title {
+		margin-bottom: rem(20);
+	}
+
+	// .newRequestTable__text
+
+	&__text {
+	}
+
+	// .newRequestTable__body
+
+	&__body {
+	}
+
+	// .newRequestTable__table
+
+	&__table {
+	}
+}
+
+.tableNewRequestTable {
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+	table,
+	td,
+	th {
+		border: 1px solid $mainColor;
+	}
+	td,
+	th {
+		padding: 6px;
+		width: 30px;
+		height: 25px;
+		text-align: center;
+	}
+	th {
+		background-color: $two !important;
+		color: $notWhite;
+		font-weight: normal;
+	}
+
+	tr {
+		cursor: pointer;
+		transition: background-color 0.2s ease;
+		&:hover {
+			background-color: #e8e8e86b;
+		}
+	}
+	._active {
+		background-color: $one !important;
+	}
+}

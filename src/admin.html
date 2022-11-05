@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('html/_head.htm',{
+	"title":"Личный кабинет"
+	})
+
+	<body>
+		<div class="wrapper">
+			@@include('html/_header.htm',{})
+
+			<main class="page">
+				<div class="page__hello">
+					<h2 class=" _h2">Привет, ${userName}</h2>
+				</div>
+
+				<section class="page__newRequestTable newRequestTable">
+					<div class="newRequestTable__container">
+						<div class="newRequestTable__head">
+							<h2 class="newRequestTable__title _h2">поступившие новые заявки</h2>
+							<div class="newRequestTable__text">
+								<p>Для изменения заявки, выделите нужную строку в таблице и внесите необходимые изменения в форме ниже.</p>
+							</div>
+						</div>
+						<div class="newRequestTable__body">
+							<div class="newRequestTable__table tableNewRequestTable">
+								<table>
+									<tbody>
+										<tr>
+											<th>Дата</th>
+											<th>Категория</th>
+											<th>Название</th>
+											<th>Описание</th>
+										</tr>
+										<tr>
+											<td>22 Oct, 2020</td>
+											<td>Категория</td>
+											<td>Imperdiet gravida bibendum ultricies ipsum</td>
+											<td>Feugiat accumsan ultrices massa tellus iaculis lectus sit tellus. Ut pulvinar adipiscing in eu accumsan volutpat imperdiet. Pellentesque viverra eget risus sit proin morbi.</td>
+										</tr>
+										<tr>
+											<td>17 Oct, 2020</td>
+											<td>Категория</td>
+											<td>Donec fames non ultrices</td>
+											<td>Massa sit libero nunc sed ligula aliquam lorem nulla mauris. Feugiat et iaculis nisi in pretium.</td>
+										</tr>
+										<tr>
+											<td>21 Sep, 2020</td>
+											<td>Категория</td>
+											<td>Risus urna dictum</td>
+											<td>Vitae nisi, consectetur est tortor quis gravida lectus. Vitae, et quisque sapien odio velit a pharetra, egestas. Commodo eleifend turpis amet vel magna lacus, enim. Sodales pellentesque est mauris, nec.</td>
+										</tr>
+										<tr>
+											<td>8 Sep, 2020</td>
+											<td>Категория</td>
+											<td>Quis vestibulum aliquet</td>
+											<td>In euismod adipiscing suspendisse sed morbi nec sed. Ut scelerisque diam donec sed aliquam eget.</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="page__count count">
+					<div class="count__container">
+						<div class="count__head">
+							<h2 class="count__title _h2">колличество решенных заявок</h2>
+						</div>
+						<div class="count__body"><img src="@img/count/Group 46.svg" alt="">
+							<p>147</p>
+						</div>
+					</div>
+				</section>
+			</main>
+			@@include('html/_footer.htm',{})
+		</div>
+		@@include('html/_popup-reg.htm',{})
+		@@include('html/_js.htm',{})
+	</body>
+
+</html>
