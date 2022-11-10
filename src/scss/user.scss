@@ -103,14 +103,16 @@
 	// .newRequest__label
 
 	&__label {
-		margin: 0 0 rem(10) rem(25);
+		display: block;
+		margin: 0 0 rem(30) rem(25);
 		color: $notWhite;
 	}
 
 	// .newRequest__input
 
 	&__input {
-		width: rem(480);
+		width: 100%;
+		max-width: rem(480);
 	}
 
 	// .newRequest__fileInput
@@ -126,14 +128,6 @@
 		align-self: center;
 		@include adaptiveValue("margin-left", -90, -50);
 		span {
-			transform: rotateY(0deg);
-			transition: all 0.5s ease;
-		}
-		&:hover {
-			span {
-				transform: rotateY(180deg);
-				transition: all 0.5s ease;
-			}
 		}
 	}
 }
@@ -238,6 +232,12 @@
 	// .myRequest__card
 
 	&__card {
+	}
+
+	&__pagination {
+		text-align: center;
+		margin-top: rem(50);
+		cursor: pointer;
 	}
 }
 
