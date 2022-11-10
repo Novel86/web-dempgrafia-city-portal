@@ -3,10 +3,13 @@
 input[type="text"],
 input[type="email"],
 input[type="tel"],
+input[type="password"],
 textarea {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
+	outline: 0;
+	outline-offset: 0;
 }
 .input {
 	display: block;
@@ -20,7 +23,7 @@ textarea {
 		box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2), inset 0px -2px 5px rgba(0, 0, 0, 0.1);
 	}
 	&._form-focus {
-		filter: brightness(90%);
+		filter: brightness(93%);
 		box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2), inset 0px -2px 5px rgba(235, 235, 235, 0.9);
 	}
 	&._form-error {
@@ -35,5 +38,8 @@ textarea {
 }
 textarea.input {
 	resize: none;
-	min-height: 100px;
+	min-height: 130px;
+}
+textarea {
+	@extend %hidescroll;
 }

@@ -78,6 +78,14 @@
 	&:focus {
 		filter: brightness(95%);
 	}
+	[class="_ic-smile"] {
+		transform: rotateY(0deg);
+		transition: all 0.5s cubic-bezier(0.46, 0.165, 0.675, 1.43);
+	}
+	&:hover [class="_ic-smile"] {
+		transform: rotateY(180deg);
+		transition: all 0.5s cubic-bezier(0.46, 0.165, 0.675, 1.43);
+	}
 }
 ._btn:hover,
 [class*="input"]:hover + ._btn {
