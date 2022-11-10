@@ -86,7 +86,7 @@ flsForms.formFieldsInit({
 /* Документация: https://template.fls.guru/template-docs/rabota-s-formami.html */
 flsForms.formSubmit();
 
-/* Модуль формы "колличество" */
+/* Модуль формы "количество" */
 // flsForms.formQuantity();
 
 /* Модуль звездного рейтинга */
