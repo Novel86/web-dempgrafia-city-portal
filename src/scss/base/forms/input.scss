@@ -10,6 +10,11 @@ textarea {
 	appearance: none;
 	outline: 0;
 	outline-offset: 0;
+	&::placeholder {
+		font-size: rem(12);
+		text-align: center;
+		opacity: 0.8;
+	}
 }
 .input {
 	display: block;
