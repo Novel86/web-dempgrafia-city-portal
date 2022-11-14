@@ -23,8 +23,7 @@ window.onload = function () {
 				removeActive();
 				elem.classList.toggle('_active');
 
-				// заполнение инпутов данными из таблицы
-				// возврат значений из ячеек в таблице
+				// заполнение инпутов данными из таблицы при клике по строке таблицы
 				let
 					idTable = elem.querySelector('td:nth-child(1)').innerHTML,
 					dateTable = elem.querySelector('td:nth-child(2)').innerHTML,
@@ -39,11 +38,7 @@ window.onload = function () {
 		}
 	}
 
-	//добавление новой категории
-	// ...
-	document.addEventListener("selectCallback", function (e) {
-		const currentSelect = e.detail.select;
-		console.log(currentSelect);
-	})
+	// валидация полей формы регистрации
+
 
 }

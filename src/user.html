@@ -19,11 +19,11 @@
 							<form action="#" method='post' id="form-newRequest" class="newRequest__form form" data-dev>
 								<div class="newRequest__item">
 									<label for="newRequestTitle" class="newRequest__label">Что улучшить</label>
-									<input type="text" id="newRequestTitle" name="title" class="input newRequest__input newRequest__input_text" data-required data-error="ошибочка">
+									<input type="text" id="newRequestTitle" name="title" class="input newRequest__input newRequest__input_text" data-required data-error="">
 								</div>
 								<div class="newRequest__item">
 									<label for="newRequestDiscription" class="newRequest__label">Кратко опишите объект улучшения</label>
-									<textarea id="newRequestDiscription" name="discription" class="input newRequest__input newRequest__input_discription" data-autoheight data-required data-error="ошибочка"></textarea>
+									<textarea id="newRequestDiscription" name="discription" class="input newRequest__input newRequest__input_discription" data-autoheight data-required data-error=""></textarea>
 								</div>
 								<div class="newRequest__item" style="z-index: 3;">
 									<label for="newRequest-category" class="newRequest__label">Категория улучшения</label>
@@ -38,7 +38,7 @@
 									<div class="newRequest__label">Фотография</div>
 									<div class="newRequest__fileInput fileInput">
 										<div class="fileInput__body">
-											<input class="fileInput__input" type="file" accept=".jpg, .png, .jpeg, .webp" name="inputFile" id="formImage" data-required data-error="ошибочка">
+											<input class="fileInput__input" type="file" accept=".jpg, .png, .jpeg, .webp" name="inputFile" id="formImage" data-required data-error="">
 											<div class="fileInput__button _btn _btn_medium">выбрать фото</div>
 										</div>
 										<span>файлы jpg, jpeg, png, bmp. не более 10 Mb</span>
@@ -200,7 +200,7 @@
 			</main>
 			@@include('html/_footer.htm',{})
 		</div>
-		@@include('html/_popup-reg.htm',{})
+		@@include('html/_popup-exit.htm',{})
 		@@include('html/_js.htm',{})
 	</body>
 

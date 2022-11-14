@@ -109,7 +109,36 @@ export let formValidate = {
 			} else {
 				this.removeError(formRequiredItem);
 			}
-		} else if (formRequiredItem.type === "checkbox" && !formRequiredItem.checked) {
+		} else if (formRequiredItem.dataset.required === "name") {
+			if (this.nameTest(formRequiredItem)) {
+				this.addError(formRequiredItem);
+				error++;
+			} else {
+				this.removeError(formRequiredItem);
+			}
+		} else if (formRequiredItem.dataset.required === "login") {
+			if (this.loginTest(formRequiredItem)) {
+				this.addError(formRequiredItem);
+				error++;
+			} else {
+				this.removeError(formRequiredItem);
+			}
+		} else if (formRequiredItem.dataset.required === "password") {
+			if (this.passTest(formRequiredItem)) {
+				this.addError(formRequiredItem);
+				error++;
+			} else {
+				this.removeError(formRequiredItem);
+			}
+		} else if (formRequiredItem.dataset.required === "passRepeat") {
+			if (this.passRepeatTest(formRequiredItem)) {
+				this.addError(formRequiredItem);
+				error++;
+			} else {
+				this.removeError(formRequiredItem);
+			}
+		}
+		else if (formRequiredItem.type === "checkbox" && !formRequiredItem.checked) {
 			this.addError(formRequiredItem);
 			error++;
 		} else {
@@ -168,6 +197,18 @@ export let formValidate = {
 	},
 	emailTest(formRequiredItem) {
 		return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(formRequiredItem.value);
+	},
+	nameTest(formRequiredItem) {
+		return !/^(?=.{2,50}$)(?![ .-])(?!.*[ .-]{2})[а-яА-Я -]+([^._-])$/.test(formRequiredItem.value);
+	},
+	loginTest(formRequiredItem) {
+		return !/^[\S+][^0-9][\S+][-_a-zA-Z0-9-]{0,25}$/.test(formRequiredItem.value);
+	},
+	passTest(formRequiredItem) {
+		return !/^[A-Za-z0-9&%#@]{8,20}$/.test(formRequiredItem.value);
+	},
+	passRepeatTest(formRequiredItem) {
+		return !(document.getElementById('userPassCheck').value == document.getElementById('userPass').value);
 	}
 }
 /* Отправка форм */

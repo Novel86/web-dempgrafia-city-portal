@@ -24,6 +24,17 @@
 		pointer-events: none;
 	}
 }
+
+._form-error {
+	label {
+		color: $accent;
+	}
+}
+
+._form-error + .fileInput__button {
+	border-bottom: 2px solid $accent;
+	color: $accent;
+}
 //</FORM>
 
 // <BUTTONS>

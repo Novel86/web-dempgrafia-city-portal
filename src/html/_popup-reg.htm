@@ -12,27 +12,29 @@
 						<form action="#" method="post" class="reg__form regForm form" id="form-regForm" data-dev>
 							<div class="regForm__item">
 								<label class='regForm__label' for="userName">Имя</label>
-								<input class='regForm__input input' type="text" name="userName" id="userName" placeholder='только кирилица, пробел и тире' data-required data-error="ошибочка">
+								<input class='regForm__input input' type="text" name="userName" id="userName" placeholder='от 2 до 50 символов. кирилица, пробел и тире' data-required='name' data-validate data-error="">
 							</div>
 							<div class="regForm__item">
 								<label class='regForm__label' for="userNicname">Логин</label>
-								<input class='regForm__input input' type="text" name="userNicname" id="userNicname" placeholder='только латиница, знаки -' data-required data-error="ошибочка">
+								<input class='regForm__input input' type="text" name="userNicname" id="userNicname" placeholder=' от 3 до 25 символов. латиница, цифры и тире' data-required='login' data-validate data-error="">
 							</div>
 							<div class="regForm__item">
 								<label class='regForm__label' for="userEmail">Почта</label>
-								<input class='regForm__input input' type="email" name="userEmail" id="userEmail" placeholder='адрес электронной почты' data-required='email' data-error="ошибочка">
+								<input class='regForm__input input' type="text" name="userEmail" id="userEmail" placeholder='адрес электронной почты' data-required='email' data-validate data-error="">
 							</div>
 							<div class="regForm__item">
 								<label class='regForm__label' for="userPass">Пароль</label>
-								<input class='regForm__input input' type="password" name="userPass" id="userPass" placeholder='только латиница, знаки @$%&/*+-' data-required data-error="ошибочка">
+								<input class='regForm__input input' type="password" name="userPass" id="userPass" placeholder='более 8 символов, латиница, цифры, знаки &%#@' data-required='password' data-validate data-error="">
+								<span class='regForm__viewpass _ic-check'></span>
 							</div>
 							<div class="regForm__item">
 								<label class='regForm__label' for="userPassCheck">Повтор Пароля</label>
-								<input class='regForm__input input' type="password" name="userPassCheck" id="userPassCheck" placeholder='повторите пароль' data-required data-error="ошибочка">
+								<input class='regForm__input input' type="password" name="userPassCheck" id="userPassCheck" placeholder='повторите пароль' data-required='passRepeat' data-validate data-error="">
+								<span class='regForm__viewpass _ic-check'></span>
 							</div>
 							<div class="regForm__item">
 								<div class='regForm__agreement'>
-									<input class='regForm__inputCheckbox checkbox' type="checkbox" name="agreement" id="userCheckbox" placeholder='повторите пароль' data-required data-error="ошибочка" checked>
+									<input class='regForm__inputCheckbox checkbox' type="checkbox" name="agreement" id="userCheckbox" data-required data-error="" checked>
 									<label class='regForm__labelCheckbox' for="userCheckbox">с условиями пользовательского соглашения ознакомлен</label>
 								</div>
 							</div>

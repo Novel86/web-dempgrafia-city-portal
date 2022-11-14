@@ -145,6 +145,26 @@ body::after {
 		padding-block: rem(15);
 	}
 
+	// .regForm__viewpass
+
+	&__viewpass {
+		position: absolute;
+		display: inline-block;
+		width: auto;
+		height: 100%;
+		right: 0;
+		top: 55%;
+		text-align: right;
+		padding-right: rem(18);
+		opacity: 0.25;
+		cursor: pointer;
+		font-size: rem(16);
+		transition: opacity 0.5s ease;
+		&:hover {
+			opacity: 0.4;
+		}
+	}
+
 	// .regForm__agreement
 
 	&__agreement {
@@ -199,6 +219,7 @@ body::after {
 	// .goodReg__head
 
 	&__head {
+		margin-bottom: rem(20);
 	}
 
 	// .goodReg__title
@@ -212,7 +233,6 @@ body::after {
 	// .goodReg__subtitle
 
 	&__subtitle {
-		margin-bottom: rem(20);
 	}
 
 	// .goodReg__body
@@ -223,5 +243,52 @@ body::after {
 	// .goodReg__item
 
 	&__item {
+	}
+}
+
+//====================выход из кабинета======================
+
+.popup {
+	// .popup__exit
+
+	&__exit {
+	}
+}
+.exit {
+	// .exit__head
+
+	&__head {
+		margin-bottom: rem(50);
+	}
+
+	// .exit__title
+
+	&__title {
+		margin-bottom: rem(10);
+	}
+
+	// .exit__subtitle
+
+	&__subtitle {
+	}
+
+	// .exit__body
+
+	&__body {
+	}
+
+	// .exit__item
+
+	&__item {
+		display: flex;
+		column-gap: rem(25);
+		:last-child {
+			a {
+				background-color: $two;
+			}
+		}
+		a {
+			outline: none;
+		}
 	}
 }
