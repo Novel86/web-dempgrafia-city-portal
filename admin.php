@@ -2,7 +2,7 @@
 <html lang="ru">
 
 <head>
-	<title>Личный кабинет</title>
+	<title>Кабинет администратора</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
@@ -37,73 +37,149 @@
 
 
 		<main class="page">
+			<div class="page__hello">
+				<h2 class=" _h2">Привет, ${userName}</h2>
+			</div>
 
-			<section class="page__newRequest newRequest">
-				<div class="newRequest__container">
-					<div class="newRequest__head">
-						<h2 class="newRequest__title _h2">Создать новую заявку</h2>
+			<section class="page__newRequestTable newRequestTable">
+				<div class="newRequestTable__container">
+					<div class="newRequestTable__head">
+						<h2 class="newRequestTable__title _h2">поступившие новые заявки</h2>
+						<div class="newRequestTable__text">
+							<p>Для изменения заявки, выделите нужную строку в таблице и внесите необходимые изменения в форме ниже.</p>
+						</div>
 					</div>
-					<div class="newRequest__body">
-						<form action="#" method='post' id="form-newRequest" class="newRequest__form form" data-dev>
-							<div class="newRequest__item">
-								<label for="newRequestTitle" class="newRequest__label">Что улучшить</label>
-								<input type="text" id="newRequestTitle" name="title" class="input newRequest__input newRequest__input_text" data-required data-error="">
+				</div>
+				<div class="newRequestTable__body">
+					<div class="newRequestTable__table tableNewRequestTable">
+						<table>
+							<thead>
+								<tr>
+									<th class='idRequest'>idRequest</th>
+									<th>Дата</th>
+									<th>Категория</th>
+									<th>Название</th>
+									<th>Описание</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class='idRequest'>00001</td>
+									<td>22 Oct, 2020</td>
+									<td>Категория1</td>
+									<td>Imperdiet gravida bibendum ultricies ipsum</td>
+									<td>Feugiat accumsan ultrices massa tellus iaculis lectus sit tellus. Ut pulvinar adipiscing in eu accumsan volutpat imperdiet. Pellentesque viverra eget risus sit proin morbi.</td>
+								</tr>
+								<tr>
+									<td class='idRequest'>00002</td>
+									<td>17 Oct, 2020</td>
+									<td>Категория2</td>
+									<td>Donec fames non ultrices</td>
+									<td>Massa sit libero nunc sed ligula aliquam lorem nulla mauris. Feugiat et iaculis nisi in pretium.</td>
+								</tr>
+								<tr>
+									<td class='idRequest'>00003</td>
+									<td>21 Sep, 2020</td>
+									<td>Категория3</td>
+									<td>Risus urna dictum</td>
+									<td>Vitae nisi, consectetur est tortor quis gravida lectus. Vitae, et quisque sapien odio velit a pharetra, egestas. Commodo eleifend turpis amet vel magna lacus, enim. Sodales pellentesque est mauris, nec.</td>
+								</tr>
+								<tr>
+									<td class='idRequest'>00004</td>
+									<td>8 Sep, 2020</td>
+									<td>Категория4</td>
+									<td>Quis vestibulum aliquet</td>
+									<td>In euismod adipiscing suspendisse sed morbi nec sed. Ut scelerisque diam donec sed aliquam eget.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</section>
+
+			<section class="page__editRequest editRequest">
+				<div class="editRequest__container">
+					<div class="editRequest__head">
+						<h2 class="editRequest__title _h2">редактор заявки</h2>
+					</div>
+					<div class="editRequest__body">
+						<form method="get" action='#' class="editRequest__form">
+							<div class="editRequest__item">
+								<h3 class='_h3 newRequest__label'>Свойства заявки</h3>
+								<div class="editRequest__discription">
+									<div class='editRequest__info'>
+										<label for="newRequestTitle" class="newRequest__label">Название</label>
+										<input type="text" id="newRequestTitle" name="title" class="input newRequest__input newRequest__input_text" data-required data-error="" disabled>
+										<label for="newRequestDiscription" class="newRequest__label">Описание</label>
+										<textarea id="newRequestDiscription" name="discription" class="input newRequest__input newRequest__input_discription" data-autoheight data-required data-error="" disabled></textarea>
+									</div>
+									<div class="editRequest__imageBefor">
+										<picture>
+											<source srcset="img/admin/editeRequest/imageBefor.webp" type="image/webp"><img src="img/admin/editeRequest/imageBefor.png" alt="фото места улучшения">
+										</picture>
+									</div>
+								</div>
 							</div>
-							<div class="newRequest__item">
-								<label for="newRequestDiscription" class="newRequest__label">Кратко опишите объект улучшения</label>
-								<textarea id="newRequestDiscription" name="discription" class="input newRequest__input newRequest__input_discription" data-autoheight data-required data-error=""></textarea>
-							</div>
-							<div class="newRequest__item" style="z-index: 3;">
-								<label for="newRequest-category" class="newRequest__label">Категория улучшения</label>
+							<div class="editRequest__item">
+								<label for="newRequest-category" class="newRequest__label _h3">Редактировать категорию или добавить новую</label>
 								<select class="newRequest__category" name="category" id="newRequest-category" data-show-selected data-speed="500">
 									<option value="category1" selected>Категория1</option>
 									<option value="category2">Категория2</option>
 									<option value="category3">Категория3</option>
 									<option value="category4">Категория4</option>
+									<option id='addCategory' value="добавить категорию">добавить категорию</option>
 								</select>
 							</div>
-							<div class="newRequest__item">
-								<div class="newRequest__label">Фотография</div>
-								<div class="newRequest__fileInput fileInput">
-									<div class="fileInput__body">
-										<input class="fileInput__input" type="file" accept=".jpg, .png, .jpeg, .webp" name="inputFile" id="formImage" data-required data-error="">
-										<div class="fileInput__button _btn _btn_medium">выбрать фото</div>
+							<div class="editRequest__item itemStatus">
+								<div class="itemStatus__title _h3">Смена статуса заявки</div>
+								<div class="itemStatus__body">
+									<div class="itemStatus__column">
+										<div class="itemStatus__cardStatus cardStatus">
+											<input class='cardStatus__status' type="radio" name="itemStatus" value='Solved' id="itemStatusSolved">
+											<label class='_btn _btn_medium _btn_bright' for="itemStatusSolved">Решено</label>
+											<div class="cardStatus__fileInput fileInput">
+												<div class="fileInput__title cardStatus__title">Загрузите фото “после”</div>
+												<div class="fileInput__body">
+													<input class="fileInput__input" type="file" accept=".jpg, .png, .jpeg, .webp" name="inputFile" id="formImage">
+													<div class="fileInput__button _btn _btn_medium">выбрать фото</div>
+												</div>
+												<p>файлы jpg, jpeg, png, bmp. не более 10 Mb</p>
+												<div class="fileInput__preview" id="formPreview"></div>
+											</div>
+										</div>
 									</div>
-									<span>файлы jpg, jpeg, png, bmp. не более 10 Mb</span>
-									<div class="fileInput__preview" id="formPreview"></div>
+									<div class="itemStatus__column">
+										<div class="itemStatus__cardStatus cardStatus cardStatus_right">
+											<input class='cardStatus__status' type="radio" name="itemStatus" value='Rejected' id="itemStatusRejected">
+											<label class='_btn _btn_medium _btn_bright' for="itemStatusRejected">Отклонить</label>
+											<div class="cardStatus__title">Укажите причину отклонения</div>
+											<textarea id="cardStatusRejection" name="discription" class="input newRequest__input newRequest__input_discription" data-autoheight></textarea>
+										</div>
+									</div>
 								</div>
-
 							</div>
-							<button class="newRequest__button _btn" type="submit"><span class="_ic-smile"></span>Отправить на улучшение</button>
-
+							<div class="editRequest__item editRequest__item_button"><button class='_btn' type='submit'><span class='_ic-smile'></span>подтвердить изменения</button></div>
 						</form>
 					</div>
-
 				</div>
-
 			</section>
 
 			<section class="page__myRequest myRequest">
 				<div class="myRequest__container">
 					<div class="myRequest__head">
-						<h1 class="myRequest__title _h2">мои заявки</h1>
-					</div>
-					<div class="myRequest__filter filter">
-						<div class="filter__body">
-							<ul class="filter__list">
-								<li class="filter__item _tags _tags_bright">категория</li>
-								<li class="filter__item _tags _tags_bright">категория 1</li>
-								<li class="filter__item _tags _tags_bright">категория 2</li>
-								<li class="filter__item _tags _tags_bright">категория 3</li>
-							</ul>
-						</div>
+						<h1 class="myRequest__title _h2">Все заявки</h1>
 					</div>
 					<div class="myRequest__body">
 						<div class="myRequest__column">
 							<div class="myRequest__card myCard">
 								<div class="myCard__date _tags _tags_bright"><span class="_ic-calendar"></span>15.07.2022</div>
 								<div class="myCard__raw">
-									<div class="myCard__media"><picture><source srcset="img/user/meRequest/imageRequest01.webp" type="image/webp"><img src="img/user/meRequest/imageRequest01.jpg" alt="фото объекта до улучшения"></picture></div>
+									<div class="myCard__media">
+										<picture>
+											<source srcset="img/user/meRequest/imageRequest01.webp" type="image/webp"><img src="img/user/meRequest/imageRequest01.jpg" alt="фото объекта до улучшения">
+										</picture>
+									</div>
 									<div class="myCard__content">
 										<h4 class="myCard__title _h4">Lorem ipsum dolor sit amet.</h4>
 										<div class="myCard__text">
@@ -121,7 +197,11 @@
 							<div class="myRequest__card myCard">
 								<div class="myCard__date _tags _tags_bright"><span class="_ic-calendar"></span>15.07.2022</div>
 								<div class="myCard__raw">
-									<div class="myCard__media"><picture><source srcset="img/user/meRequest/imageRequest02.webp" type="image/webp"><img src="img/user/meRequest/imageRequest02.jpg" alt="фото объекта до улучшения"></picture></div>
+									<div class="myCard__media">
+										<picture>
+											<source srcset="img/user/meRequest/imageRequest02.webp" type="image/webp"><img src="img/user/meRequest/imageRequest02.jpg" alt="фото объекта до улучшения">
+										</picture>
+									</div>
 									<div class="myCard__content">
 										<h4 class="myCard__title _h4">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
 										<div class="myCard__text">
@@ -139,7 +219,11 @@
 							<div class="myRequest__card myCard">
 								<div class="myCard__date _tags _tags_bright"><span class="_ic-calendar"></span>15.07.2022</div>
 								<div class="myCard__raw">
-									<div class="myCard__media"><picture><source srcset="img/user/meRequest/imageRequest03.webp" type="image/webp"><img src="img/user/meRequest/imageRequest03.jpg" alt="фото объекта до улучшения"></picture></div>
+									<div class="myCard__media">
+										<picture>
+											<source srcset="img/user/meRequest/imageRequest03.webp" type="image/webp"><img src="img/user/meRequest/imageRequest03.jpg" alt="фото объекта до улучшения">
+										</picture>
+									</div>
 									<div class="myCard__content">
 										<h4 class="myCard__title _h4">Lorem ipsum dolor sit.</h4>
 										<div class="myCard__text">
@@ -158,7 +242,11 @@
 							<div class="myRequest__card myCard">
 								<div class="myCard__date _tags _tags_bright"><span class="_ic-calendar"></span>15.07.2022</div>
 								<div class="myCard__raw">
-									<div class="myCard__media"><picture><source srcset="img/user/meRequest/imageRequest04.webp" type="image/webp"><img src="img/user/meRequest/imageRequest04.jpg" alt="фото объекта до улучшения"></picture></div>
+									<div class="myCard__media">
+										<picture>
+											<source srcset="img/user/meRequest/imageRequest04.webp" type="image/webp"><img src="img/user/meRequest/imageRequest04.jpg" alt="фото объекта до улучшения">
+										</picture>
+									</div>
 									<div class="myCard__content">
 										<h4 class="myCard__title _h4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, reiciendis.</h4>
 										<div class="myCard__text">
@@ -176,7 +264,11 @@
 							<div class="myRequest__card myCard">
 								<div class="myCard__date _tags _tags_bright"><span class="_ic-calendar"></span>15.07.2022</div>
 								<div class="myCard__raw">
-									<div class="myCard__media"><picture><source srcset="img/user/meRequest/imageRequest05.webp" type="image/webp"><img src="img/user/meRequest/imageRequest05.jpg" alt="фото объекта до улучшения"></picture></div>
+									<div class="myCard__media">
+										<picture>
+											<source srcset="img/user/meRequest/imageRequest05.webp" type="image/webp"><img src="img/user/meRequest/imageRequest05.jpg" alt="фото объекта до улучшения">
+										</picture>
+									</div>
 									<div class="myCard__content">
 										<h4 class="myCard__title _h4">Lorem, ipsum dolor sit amet consectetur adipisicing.</h4>
 										<div class="myCard__text">
@@ -194,7 +286,11 @@
 							<div class="myRequest__card myCard">
 								<div class="myCard__date _tags _tags_bright"><span class="_ic-calendar"></span>15.07.2022</div>
 								<div class="myCard__raw">
-									<div class="myCard__media"><picture><source srcset="img/user/meRequest/imageRequest06.webp" type="image/webp"><img src="img/user/meRequest/imageRequest06.jpg" alt="фото объекта до улучшения"></picture></div>
+									<div class="myCard__media">
+										<picture>
+											<source srcset="img/user/meRequest/imageRequest06.webp" type="image/webp"><img src="img/user/meRequest/imageRequest06.jpg" alt="фото объекта до улучшения">
+										</picture>
+									</div>
 									<div class="myCard__content">
 										<h4 class="myCard__title _h4">Cursus diam cras proin tempus sit ipsum</h4>
 										<div class="myCard__text">
@@ -244,7 +340,7 @@
 						<div class="exit__body">
 							<div class="exit__item">
 								<div data-close><a class='_btn' href="#">Нет, остаться</a></div>
-								<div><a class='_btn' href="home.html">Да, выйти</a></div>
+								<div><a class='_btn' href="index.php">Да, выйти</a></div>
 							</div>
 						</div>
 					</div>
