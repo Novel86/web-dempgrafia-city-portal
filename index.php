@@ -17,25 +17,25 @@ include_once("./php/_head.php");
 
 		if (isset($_POST['userName']) && isset($_POST['userNicname']) && isset($_POST['userEmail']) && isset($_POST['userPass'])) {
 			if ($_POST['userName'] != '') {
-				$userName = $_POST['userName'];
+				$userName = htmlspecialchars($_POST['userName']);
 			} else {
 				$errorRegPhp .= '<div style="text-align: center;">Поле "Имя" не заполнено.</div>';
 			}
 
 			if ($_POST['userNicname'] != '') {
-				$userNicname = $_POST['userNicname'];
+				$userNicname = htmlspecialchars($_POST['userNicname']);
 			} else {
 				$errorRegPhp .= '<div style="text-align: center;">Вы не придумали свой логин.</div>';
 			}
 
 			if ($_POST['userEmail'] != '') {
-				$userEmail = $_POST['userEmail'];
+				$userEmail = htmlspecialchars($_POST['userEmail']);
 			} else {
 				$errorRegPhp .= '<div style="text-align: center;">Вы не указали почту.</div>';
 			}
 
 			if ($_POST['userPass'] != '') {
-				$userPass = $_POST['userPass'];
+				$userPass = htmlspecialchars($_POST['userPass']);
 			} else {
 				$errorRegPhp .= '<div style="text-align: center;">Вы не задали пароль.</div>';
 			}
