@@ -1,43 +1,55 @@
 <!DOCTYPE html>
 <html lang="ru">
 
-	<head>
-		<title>Главная</title>
-		<meta charset="UTF-8">
-		<meta name="format-detection" content="telephone=no">
-		<!-- <style>body{opacity: 0;}</style> -->
-		<link rel="stylesheet" href="css/style.min.css?_v=20221116025507">
-		<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
-		<link rel="icon" type="image/png" href="img/favicon.png">
-		<!-- <meta name="robots" content="noindex, nofollow"> -->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	</head>
+	<?php
+include_once("./php/_head.php");
+?>
 
 	<body>
-		<?php
-	echo ('Привет из php')
-	?>
 		<div class="wrapper">
 
-			<header class="header">
-				<div class="header__container">
-					<div class="header__body">
-						<div class="header__logo">
-							<div class="header__image"><img src="img/logo.svg" alt="логотип городского портала"></div>
-							<div class="header__line"></div>
-							<div class="header__title">Сделаем лучше <p>вместе</p>
-							</div>
-						</div>
-						<nav class="header__menu menu">
-							<ul class="menu__list">
-								<li class="menu__item"><a class="menu__signIn _nav" href="#" data-popup="#popupAuth"><span class="_ic-smile"></span>вход</a></li>
-								<li class="menu__item"><a class="menu__signUp _nav" href="#" data-popup="#popupReg">регистрация</a></li>
-							</ul>
-						</nav>
-					</div>
+			<?php
+		echo '<pre>';
+		print_r($_POST);
+		echo '</pre>';
 
-				</div>
-			</header>
+		$errorRegPhp = '';
+
+		if (isset($_POST['userName']) && isset($_POST['userNicname']) && isset($_POST['userEmail']) && isset($_POST['userPass'])) {
+			if ($_POST['userName'] != '') {
+				$userName = $_POST['userName'];
+			} else {
+				$errorRegPhp .= '<div style="text-align: center;">Поле "Имя" не заполнено.</div>';
+			}
+
+			if ($_POST['userNicname'] != '') {
+				$userNicname = $_POST['userNicname'];
+			} else {
+				$errorRegPhp .= '<div style="text-align: center;">Вы не придумали свой логин.</div>';
+			}
+
+			if ($_POST['userEmail'] != '') {
+				$userEmail = $_POST['userEmail'];
+			} else {
+				$errorRegPhp .= '<div style="text-align: center;">Вы не указали почту.</div>';
+			}
+
+			if ($_POST['userPass'] != '') {
+				$userPass = $_POST['userPass'];
+			} else {
+				$errorRegPhp .= '<div style="text-align: center;">Вы не задали пароль.</div>';
+			}
+
+			if (isset($_POST['agreement']) && $_POST['agreement'] != 'false') {
+				$agreement = $_POST['agreement'];
+			} else {
+				$errorRegPhp .= '<div style="text-align: center;">Вы не согласны.</div>';
+			}
+		}
+
+		include_once("./php/_header.php");
+
+		?>
 
 			<main class="page">
 
@@ -159,7 +171,7 @@
 								<div class="reg__subtitle">нового пользователя</div>
 							</div>
 							<div class="reg__body">
-								<form action="#" method="post" class="reg__form regForm form" id="form-regForm" data-dev>
+								<form action="" method="post" class="reg__form regForm form" id="form-regForm">
 									<div class="regForm__item">
 										<label class='regForm__label' for="userName">Имя</label>
 										<input class='regForm__input input' type="text" name="userName" id="userName" placeholder='от 2 до 50 символов. кирилица, пробел и тире' data-required='name' data-validate data-error="">
@@ -215,17 +227,17 @@
 								<div class="reg__subtitle">войди в свой кабинет</div>
 							</div>
 							<div class="reg__body">
-								<form action="#" method="post" class="reg__form regForm form" id="form-auth" data-dev>
+								<form action="" method="post" class="reg__form regForm form" id="form-auth">
 									<div class="regForm__item">
 										<label class='regForm__label' for="userNicname">Логин</label>
-										<input class='regForm__input input' type="text" name="userNicname" id="authNicname" placeholder='только латиница, знаки -' data-required data-error="">
+										<input class='regForm__input input' type="text" name="userNicname" id="authNicname" data-required data-error="">
 									</div>
 									<div class="regForm__item">
 										<label class='regForm__label' for="userPass">Пароль</label>
-										<input class='regForm__input input' type="password" name="userPass" id="authPass" placeholder='только латиница, знаки @$%&/*+-' data-required data-error="">
+										<input class='regForm__input input' type="password" name="userPass" id="authPass" data-required data-error="">
 									</div>
 									<div class="regForm__item">
-										<button type="submit" class="regForm__button _btn"><span class='_ic-person'></span>Зарегистрироваться</button>
+										<button type="submit" class="regForm__button _btn"><span class='_ic-person'></span>Войти</button>
 									</div>
 									<div div class="regForm__item" class="regForm__item">
 										<div class="regForm__login">еще не зарегестрированы, то вам <a href="#" data-popup="#popupReg">сюда</a></div>
