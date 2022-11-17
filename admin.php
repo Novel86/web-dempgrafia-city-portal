@@ -13,7 +13,17 @@ include_once("./php/_head.php");
 
 			<main class="page">
 				<div class="page__hello">
-					<h2 class=" _h2">Привет, ${userName}</h2>
+					<?php
+				if (!empty($_SESSION)) {
+					echo "
+					<h2 class=' _h2'>Привет, \${ {$_SESSION['userNicname']} }</h2>
+					";
+				} else {
+					echo "
+					<h2 class=' _h2'>Привет, \${userName}</h2>
+					";
+				}
+				?>
 				</div>
 
 				<section class="page__newRequestTable newRequestTable">
@@ -316,7 +326,7 @@ include_once("./php/_head.php");
 							<div class="exit__body">
 								<div class="exit__item">
 									<div data-close><a class='_btn' href="#">Нет, остаться</a></div>
-									<div><a class='_btn' href="index.php">Да, выйти</a></div>
+									<div><a class='_btn' href="./php/exit.php">Да, выйти</a></div>
 								</div>
 							</div>
 						</div>

@@ -49,35 +49,76 @@ if (
 		if ($isUserNicname || $isUserEmail) {
 
 			if ($isUserNicname) {
-				$errorRegPhp .= '<div style="text-align: center;">Логин уже существует.</div>';
+				$errorRegPhp .= 'Такой ЛОГИН уже зарегистрирован. \n';
 			}
 			if ($isUserEmail) {
-				$errorRegPhp .= '<div style="text-align: center;">Почта уже существует.</div>';
+				$errorRegPhp .= 'Я уже знаю такой ПОЧТОВЫЙ ЯЩИК. \n';
 			}
+			if ($errorRegPhp != '') {
+				echo "<script>
+			alert('{$errorRegPhp}');
+			</script>";
+			}
+
 			if (isset($_POST['userName'])) {
-				echo "<meta http-equiv='refresh' content='6; URL=/'>";
+				echo "<meta http-equiv='refresh' content='0; URL=/'>";
 			}
 		} else {
 			$connectMySql->query("INSERT INTO `cityPortal_users` (`id`, `userName`, `userNicname`, `userEmail`, `userPass`, `userIsAdmin`, `userRegDate`) VALUES (NULL, '$userName', '$userNicname', '$userEmail', '$userPass', '0', CURRENT_TIMESTAMP)");
 
-			$successMessege = '
-					<div class="popup__goodReg goodReg">
-						<div class="goodReg__head">
-								<div class="goodReg__title _h1">Регистрация успешна</div>
-								<div class="goodReg__subtitle">вы успешно зарегистрировались</div>
-						</div>
-						<div class="goodReg__body">
-							<div class="goodReg__item">
-									<p>сейчас вы будете перенаправлены на страницу личного кабинета.</p>
-							</div>
-						</div>
-					</div>';
+			$successMessege = 'Всё успешно! Сейчас перенаправлю в личный кабинет.';
+			if ($successMessege != '') {
+				echo "<script>
+			alert('{$successMessege}');
+			</script>";
+			}
+
 			$_SESSION['userName'] = $_POST['userName'];
 			$_SESSION['userNicname'] = $_POST['userNicname'];
-			$_SESSION['userIsAdmin'] = 0;
 			if (isset($_POST['userName'])) {
-				echo '<meta http-equiv="refresh" content="6; URL=user.php">';
+				echo '<meta http-equiv="refresh" content="0; URL=./user.php">';
 			}
+			$isReged = mysqli_fetch_array($connectMySql->query("SELECT * FROM `cityPortal_users` WHERE `userNicname` = '$userNicname' AND `userPass` = '$userPass';"));
+			if ($isReged) {
+				$_SESSION['userId'] = $isReged['id'];
+				$_SESSION['userIsAdmin'] = $isReged['userIsAdmin'];
+			}
+		}
+	}
+}
+//авторизация. проверка на пустые поля формы
+if (isset($_POST['authNicname']) && isset($_POST['authPass'])) {
+	if ($_POST['authNicname'] != '') {
+		$authNicname = htmlspecialchars($_POST['authNicname']);
+	} else {
+		$errorRegPhp .= '<div style="text-align: center;">Поле "Логин" не заполнено.</div>';
+	}
+	if ($_POST['authPass'] != '') {
+		$authPass = htmlspecialchars($_POST['authPass']);
+	} else {
+		$errorRegPhp .= '<div style="text-align: center;">Поле "Пароль" не заполнено.</div>';
+	}
+
+	//авторизация. проверка на существ пользователя и вход
+	if ($errorRegPhp == '') {
+
+		$isLogin = mysqli_fetch_array($connectMySql->query("SELECT * FROM `cityPortal_users` WHERE `userNicname` = '$authNicname' AND `userPass` = '$authPass';"));
+
+		if ($isLogin) {
+			$_SESSION['userId'] = $isLogin['id'];
+			$_SESSION['userName'] = $isLogin['userName'];
+			$_SESSION['userNicname'] = $isLogin['userNicname'];
+			$_SESSION['userIsAdmin'] = $isLogin['userIsAdmin'];
+			if ($_SESSION['userIsAdmin'] == 0) {
+				echo "<meta http-equiv='refresh' content='0; URL=./user.php'>";
+			} else {
+				echo "<meta http-equiv='refresh' content='0; URL=./admin.php'>";
+			}
+		} else {
+			$errorRegPhp .= 'Я не нашел такаго юзера. Логин или пароль указаны не верно!';
+			echo "<script>
+			alert('{$errorRegPhp}');
+			</script>";
 		}
 	}
 }
