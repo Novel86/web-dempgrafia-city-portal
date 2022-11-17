@@ -1,3 +1,8 @@
+<?php
+session_start();
+$connectMySql = mysqli_connect('cityportal', 'romank1j_my', 'e77*TsHZ', 'romank1j_my');
+?>
+
 <head>
 	<title>Главная</title>
 	<meta charset="UTF-8">
