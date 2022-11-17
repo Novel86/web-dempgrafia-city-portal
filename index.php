@@ -6,52 +6,45 @@ include_once("./php/_head.php");
 ?>
 
 	<body>
+		<!-- if ($connectMySql) {
+			echo "Успех";
+			echo '<pre>';
+			print_r($connectMySql);
+			echo '</pre>';
+		} -->
+
+		<!-- echo '<pre>';
+		print_r($_POST);
+		echo '</pre>'; -->
 		<div class="wrapper">
 
 			<?php
-		echo '<pre>';
-		print_r($_POST);
-		echo '</pre>';
-
-		$errorRegPhp = '';
-
-		if (isset($_POST['userName']) && isset($_POST['userNicname']) && isset($_POST['userEmail']) && isset($_POST['userPass'])) {
-			if ($_POST['userName'] != '') {
-				$userName = htmlspecialchars($_POST['userName']);
-			} else {
-				$errorRegPhp .= '<div style="text-align: center;">Поле "Имя" не заполнено.</div>';
-			}
-
-			if ($_POST['userNicname'] != '') {
-				$userNicname = htmlspecialchars($_POST['userNicname']);
-			} else {
-				$errorRegPhp .= '<div style="text-align: center;">Вы не придумали свой логин.</div>';
-			}
-
-			if ($_POST['userEmail'] != '') {
-				$userEmail = htmlspecialchars($_POST['userEmail']);
-			} else {
-				$errorRegPhp .= '<div style="text-align: center;">Вы не указали почту.</div>';
-			}
-
-			if ($_POST['userPass'] != '') {
-				$userPass = htmlspecialchars($_POST['userPass']);
-			} else {
-				$errorRegPhp .= '<div style="text-align: center;">Вы не задали пароль.</div>';
-			}
-
-			if (isset($_POST['agreement']) && $_POST['agreement'] != 'false') {
-				$agreement = $_POST['agreement'];
-			} else {
-				$errorRegPhp .= '<div style="text-align: center;">Вы не согласны.</div>';
-			}
-		}
-
+		$connectMySql = mysqli_connect('cityportal', 'romank1j_my', 'e77*TsHZ', 'romank1j_my');
+		include_once('./php/_login.php');
 		include_once("./php/_header.php");
-
 		?>
 
 			<main class="page">
+				<!-- вывод сообщений о регистрации -->
+				<?php
+			if (!$successMessege == '') {
+				echo $successMessege;
+			}
+			if (!$errorRegPhp == '') {
+				echo "
+				<div class='popup__goodReg goodReg'>
+					<div class='goodReg__head'>
+							<div class='goodReg__title _h1'>Отказ</div>
+							<div class='goodReg__subtitle'>исправте ошибки и попробуйте еще раз.</div>
+					</div>
+					<div class='goodReg__body'>
+						<div class='goodReg__item'>
+								<p>{$errorRegPhp}</p>
+						</div>
+					</div>
+				</div>";
+			}
+			?>
 
 				<section class="page__first first">
 					<div class="first__content">
