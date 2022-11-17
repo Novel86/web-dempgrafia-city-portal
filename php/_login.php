@@ -59,6 +59,7 @@ if (
 			}
 		} else {
 			$connectMySql->query("INSERT INTO `cityPortal_users` (`id`, `userName`, `userNicname`, `userEmail`, `userPass`, `userIsAdmin`, `userRegDate`) VALUES (NULL, '$userName', '$userNicname', '$userEmail', '$userPass', '0', CURRENT_TIMESTAMP)");
+
 			$successMessege = '
 					<div class="popup__goodReg goodReg">
 						<div class="goodReg__head">
@@ -71,6 +72,9 @@ if (
 							</div>
 						</div>
 					</div>';
+			$_SESSION['userName'] = $_POST['userName'];
+			$_SESSION['userNicname'] = $_POST['userNicname'];
+			$_SESSION['userIsAdmin'] = 0;
 			if (isset($_POST['userName'])) {
 				echo '<meta http-equiv="refresh" content="6; URL=user.php">';
 			}
