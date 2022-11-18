@@ -33,7 +33,7 @@ include_once("./php/_head.php");
 							<h2 class="newRequest__title _h2">Создать новую заявку</h2>
 						</div>
 						<div class="newRequest__body">
-							<form action="#" method='post' id="form-newRequest" class="newRequest__form form" data-dev>
+							<form action="#" method='post' id="form-newRequest" class="newRequest__form form">
 								<div class="newRequest__item">
 									<label for="newRequestTitle" class="newRequest__label">Что улучшить</label>
 									<input type="text" id="newRequestTitle" name="title" class="input newRequest__input newRequest__input_text" data-required data-error="">
