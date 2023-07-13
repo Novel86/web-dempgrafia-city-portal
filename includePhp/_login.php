@@ -1,5 +1,4 @@
 <?php
-
 $errorRegPhp = '';
 $successMessege = '';
 
@@ -40,7 +39,7 @@ if (
 		$errorRegPhp .= '<div style="text-align: center;">Вы не согласны.</div>';
 	}
 
-	//регистрация. проверка на существ пользователя
+	//регистрация. проверка на существующего пользователя
 	if ($errorRegPhp == '') {
 
 		$isUserNicname = mysqli_fetch_array($connectMySql->query("SELECT * FROM `cityPortal_users` WHERE `userNicname` = '$userNicname';"));
@@ -76,7 +75,8 @@ if (
 			$_SESSION['userName'] = $_POST['userName'];
 			$_SESSION['userNicname'] = $_POST['userNicname'];
 			if (isset($_POST['userName'])) {
-				echo '<meta http-equiv="refresh" content="0; URL=./user.php">';
+				header('HTTP/1.1 200 OK');
+				header("Location: $schemeHost/user.php");
 			}
 			$isReged = mysqli_fetch_array($connectMySql->query("SELECT * FROM `cityPortal_users` WHERE `userNicname` = '$userNicname' AND `userPass` = '$userPass';"));
 			if ($isReged) {
@@ -110,9 +110,15 @@ if (isset($_POST['authNicname']) && isset($_POST['authPass'])) {
 			$_SESSION['userNicname'] = $isLogin['userNicname'];
 			$_SESSION['userIsAdmin'] = $isLogin['userIsAdmin'];
 			if ($_SESSION['userIsAdmin'] == 0) {
-				echo "<meta http-equiv='refresh' content='0; URL=./user.php'>";
+				header('HTTP/1.1 200 OK');
+				header("Location: {$scheme}{$host}/user.php");
+				// header("Location: $schemeHost/user.php");
+				// echo "<meta http-equiv='refresh' content='0; URL=./user.php'>";
 			} else {
-				echo "<meta http-equiv='refresh' content='0; URL=./admin.php'>";
+				header('HTTP/1.1 200 OK');
+				header("Location: {$scheme}{$host}/admin.php");
+				// header("Location: $schemeHost/admin.php");
+				// echo "<meta http-equiv='refresh' content='0; URL=./admin.php'>";
 			}
 		} else {
 			$errorRegPhp .= 'Я не нашел такаго юзера. Логин или пароль указаны не верно!';

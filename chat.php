@@ -1,15 +1,37 @@
 <?php
 include_once("includePhp/_connect.php");
 include_once("includePhp/_login.php");
+$errorChat = "";
+if (isset($_POST["userMessege"])) {
+	if ($_POST["userMessege"] != "") {
+		$userMessege = htmlspecialchars($_POST["userMessege"]);
+		$idUser = $_SESSION['userId'];
+		$connectMySql->query("INSERT INTO `cityPortal_messege` (`id`, `messege`, `idUser`, `dateMessege`) VALUES (NULL, '$userMessege', '$idUser', CURRENT_TIMESTAMP);");
+		header('HTTP/1.1 200 OK');
+		header("Location: $schemeHost/chat.php");
+	} else {
+		$errorChat .= "Не написал сообщение. Без текста не получится!";
+	}
+}
+
+// удаление своих сообщений
+if (isset($_GET['id'])) {
+	$messegeId = $_GET['id'];
+	$connectMySql->query("DELETE FROM `cityPortal_messege` WHERE `cityPortal_messege`.`id` = $messegeId;");
+	header('HTTP/1.1 200 OK');
+	header("Location: {$scheme}{$host}/chat.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
 
 <head>
-	<title>Сделаем лучше вместе. Главная</title>
+	<title>Сделаем лучше вместе. Чат</title>
 	<?php
 	include_once("includePhp/_head.php");
 	?>
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 
 <body>
@@ -18,129 +40,121 @@ include_once("includePhp/_login.php");
 		<?php
 		include_once("./includePhp/_header.php");
 		?>
-
-		<main class="page">
-
-			<section class="page__first first">
-				<div class="first__content">
-					<div class="first__container">
-						<div class="first__body">
-							<h1 class="first__title _h1">Позаботимся о благоустройстве вместе</h1>
-							<div class="first__text _p">Amet viverra tellus lobortis blandit eleifend justo, etiam dignissim amet risus pellentesque velit vulputate tortor</div>
-							<a href="#" class="first__btn _btn"><span class="_ic-smile"></span>узнать подробнее</a>
+		<div class='container-md'>
+			<h2 class='_h2 my-5'>Чат пользователей портала</h2>
+			<?php
+			// рендер формы отправки сообщения в чат
+			if (!empty($_SESSION)) {
+				echo "
+					<form action='' class='' method='POST'>
+					<div class='d-flex align-items-end'>
+						<div class='col-5 mx-2'>
+							<input class='regForm__input w-100 input p-3' data-error='' name='userMessege' placeholder='написать сообщение'></input>
 						</div>
+						<button type='submit' type='button' class='_btn'>Написать</button>
+						</form>
+						</div>
+					";
+			} else {
+				echo "<div class='m-0 p-4 h5 alert alert-secondary w-auto' role='alert' style='text-align: center;'>Войди в свой аккаунт, чтобы оставлять сообщения</div>";
+			}
 
-					</div>
+			if ($errorChat != "") {
+				echo "
+					<div class='text-center my-4 mx-2 p-2 alert alert-danger w-auto' role='alert'>{$errorChat}</div>
+					";
+			}
+			?>
+			<hr>
 
-				</div>
-				<div class="first__image">
-					<img src="img/first/Linth.svg" alt="узор на главном экране">
-				</div>
+			<?php
+			// пагинация
+			if (isset($_GET['pageMsg'])) {
+				$pageMsg = $_GET['pageMsg'];
+			} else {
+				$pageMsg = 1;
+			}
+			$msgPerPage = 5; // кол-во записей на странице
+			$firstOfsetMsg = ($pageMsg - 1) * $msgPerPage; // порядковый номер первого сообщения на странице
+			$msgCountSQL = mysqli_fetch_array($connectMySql->query("SELECT COUNT(*) FROM `cityPortal_messege`"));
+			$msgCountSQL = $msgCountSQL[0]; // кол-во сообщений в базе
+			$pageCount = ceil($msgCountSQL / $msgPerPage); // необходимо кол-во страниц для сообщений
 
-			</section>
-
-			<section class="page__request request">
-				<div class="request__container">
-					<div class="request__head">
-						<h2 class="request__title _h2">Последние заявки</h2>
-					</div>
-					<div class="request__body">
-						<div class="request__row">
-							<?php
-							$sqlRequest = $connectMySql->query("SELECT * FROM `cityPortal_requests` ORDER BY `cityPortal_requests`.`requestCreateDate` DESC LIMIT 4");
-							$requestFromSql = mysqli_fetch_array($sqlRequest);
-							do {
-								$date = date_format(date_create($requestFromSql['requestCreateDate']), 'd m Y H:i');
-								$requestTitle = $requestFromSql['requestTitle'];
-								$requestDiscription = $requestFromSql['requestDiscription'];
-								$requestCategory = $requestFromSql['requestCategory'];
-								$requestFileBefore = $requestFromSql['requestFileBefore'];
-								$requestStatus = $requestFromSql['requestStatus'];
-								echo "<div class='request__column'>
-									<div class='request__card cardRequest'>
-										<div class='cardRequest__body'>
-											<div class='cardRequest__date _tags _tags_bright'><span class='_ic-calendar'></span>$date</div>
-											<div class='cardRequest__image'>
-												<img src='$requestFileBefore' alt='фото заявки'>
-												<div class='cardRequest__status _tags _tags_big _tags_bright'>$requestStatus</div>
-											</div>
-
-											<div class='cardRequest__text'>$requestDiscription</div>
-											<div class='cardRequest__category _tags _tags_bright'>$requestCategory</div>
-										</div>
-									</div>
+			// рендер блока сообщений
+			$sqlMessege = $connectMySql->query("SELECT * FROM `cityPortal_users`, `cityPortal_messege` WHERE `cityPortal_messege`.`idUser`= `cityPortal_users`.`id` ORDER BY `cityPortal_messege`.`dateMessege` DESC LIMIT $firstOfsetMsg, $msgPerPage");
+			$messegeFromSql = mysqli_fetch_array($sqlMessege);
+			do {
+				$date = date_format(date_create($messegeFromSql['dateMessege']), 'd M H:i');
+				$messegeId = $messegeFromSql['id'];
+				if ($messegeFromSql['idUser'] == $_SESSION['userId']) {
+					echo "<div class='row gx-3 mb-5 d-flex align-items-start justify-content-start'>
+								<img src='https://phonoteka.org/uploads/posts/2021-05/thumbs/1620314789_13-phonoteka_org-p-avatarki-s-prozrachnim-fonom-13.png' class='r-5' alt='аватар пользователя' style='max-width: 60px'>
+								<div class='col-lg-auto mb-2' style='min-width: 150px'>
+									<p class='mb-0 h4'><strong>{$messegeFromSql['userNicname']}:</strong></p>
+									<p class='mt-2 mb-0' style='font-size: .6rem;'><small class='text-light bg-dark p-1 px-3 rounded-pill'>{$date}</small></p>
 								</div>
+								<p class='col-lg-5 pt-1'><em>{$messegeFromSql['messege']}</em></p>
+								<a href='?id=$messegeId' class='btn btn-danger col-lg-1'><span class='_ic-close'></span></a>
+							</div>";
+				} else {
+					echo "<div class='row gx-3 mb-5'>
+					<img src='https://phonoteka.org/uploads/posts/2021-05/thumbs/1620314789_13-phonoteka_org-p-avatarki-s-prozrachnim-fonom-13.png' class='r-5' alt='аватар пользователя' style='max-width: 60px'>
+								<div class='col-lg-auto mb-2' style='min-width: 150px'>
+									<p class='mb-0 h4'><strong>{$messegeFromSql['userNicname']}:</strong></p>
+									<p class='mt-2 mb-0' style='font-size: .6rem;'><small class='text-light bg-dark p-1 px-3 rounded-pill'>{$date}</small></p>
+								</div>
+								<p class='col-lg-5 pt-1'><em>{$messegeFromSql['messege']}</em></p>
+							</div>";
+				}
+			} while ($messegeFromSql = mysqli_fetch_array($sqlMessege));
+
+			?>
+
+			<nav aria-label="Page navigation example">
+				<ul class="pagination d-flex justify-content-center">
+					<li class='page-item'>
+						<a class='page-link' href=<?php if ($pageMsg <= 1) {
+																echo "";
+															} else {
+																echo "?pageMsg=" . ($pageMsg - 1);
+															} ?> aria-label='Previous'>
+							<span aria-hidden='true'>&laquo;</span>
+						</a>
+					</li>
+					<?php
+					for ($i = 1; $i <= $pageCount; $i++) {
+						if ($i == $pageMsg) {
+							echo "
+								<li class='page-item active'><a class='page-link' href='?pageMsg=$i'>$i</a></li>
 								";
-							} while ($requestFromSql = mysqli_fetch_array($sqlRequest));
-							?>
-
-							<!-- <div class="request__column">
-									<div class="request__card cardRequest">
-										<div class="cardRequest__body">
-											<div class="cardRequest__date _tags _tags_bright"><span class="_ic-calendar"></span>15.07.2022</div>
-											<div class="cardRequest__image">
-												<img src="img/request/Rectangle 3-1.png" alt="фото заявки">
-												<div class="cardRequest__status _tags _tags_big _tags_bright">новая</div>
-											</div>
-
-											<div class="cardRequest__text">Cursus diam cras proin tempus sit ipsum</div>
-											<div class="cardRequest__category _tags _tags_bright">категория1</div>
-										</div>
-									</div>
-								</div>
-								<div class="request__column">
-									<div class="request__card cardRequest">
-										<div class="cardRequest__body">
-											<div class="cardRequest__date _tags _tags_bright"><span class="_ic-calendar"></span>15.07.2022</div>
-											<div class="cardRequest__image">
-												<img src="img/request/Rectangle 3-2.png" alt="фото заявки">
-												<div class="cardRequest__status _tags _tags_big _tags_bright">новая</div>
-											</div>
-
-											<div class="cardRequest__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus ipsam fuga quis.</div>
-											<div class="cardRequest__category _tags _tags_bright">категория1</div>
-										</div>
-									</div>
-								</div>
-								<div class="request__column">
-									<div class="request__card cardRequest">
-										<div class="cardRequest__body">
-											<div class="cardRequest__date _tags _tags_bright"><span class="_ic-calendar"></span>15.07.2022</div>
-											<div class="cardRequest__image">
-												<img src="img/request/Rectangle 3-3.png" alt="фото заявки">
-												<div class="cardRequest__status _tags _tags_big _tags_bright">новая</div>
-											</div>
-
-											<div class="cardRequest__text">Cursus diam cras proin tempus sit ipsum</div>
-											<div class="cardRequest__category _tags _tags_bright">категория1</div>
-										</div>
-									</div>
-								</div> -->
-						</div>
-					</div>
-				</div>
-
-			</section>
-
-			<section class="page__count count">
-				<div class="count__container">
-					<div class="count__head">
-						<h2 class="count__title _h2">количество решенных заявок</h2>
-					</div>
-					<div class="count__body"><img src="img/count/Group 46.svg" alt="">
-						<p>147</p>
-					</div>
-				</div>
-			</section>
-
-		</main>
-
-		<footer class="footer">
-
-			<div class="footer__content">Новосибирск, 2022</div>
-		</footer>
-
+						} else {
+							echo "
+							<li class='page-item'><a class='page-link' href='?pageMsg=$i'>$i</a></li>
+							";
+						}
+					}
+					?>
+					<li class='page-item'>
+						<a class='page-link' href=<?php if ($pageMsg >= $pageCount) {
+																echo "";
+															} else {
+																echo "?pageMsg=" . ($pageMsg + 1);
+															} ?> aria-label='Next'>
+							<span aria-hidden='true'>&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+	<script src="js/app.js"></script>
+
+	<footer class="footer">
+
+		<div class="footer__content">Новосибирск, 2022</div>
+	</footer>
 
 	<div id="popupReg" aria-hidden="true" class="popup">
 		<div class="popup__wrapper">
@@ -271,9 +285,4 @@ include_once("includePhp/_login.php");
 			</div>
 		</div>
 	</div>
-
-	<script src="js/app.js"></script>
-
 </body>
-
-</html>
